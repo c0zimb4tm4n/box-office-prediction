@@ -5,7 +5,7 @@ A tool that aims to predict box office revenue of hypothetical movies based on t
 Tool
 
 ## Question of interest:
-
+We seek to build a web tool that should be able to predict the box office revenues, with resonable accuracy, of hypothetical movies based on a hypothetical cast and crew.
 
 ## Goals:
 
@@ -15,6 +15,8 @@ Tool
 4. Enable users to input a desired cast and crew for a tentative movie.
 5. Use the trained model to predict the potential box office collection of this hypothetical movie.
 
-
+## Data Set:
+1. IMDb and Box Office Mojo Movie/TV/OTT Data (Bulk Data SAMPLE) (AWS Data Exchange Product)
+2. IMDb Essential Metadata for Movies/TV/OTT (Bulk Data SAMPLE) (AWS Data Exchange Product)
 
 
