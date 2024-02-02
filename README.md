@@ -18,5 +18,5 @@ We seek to build a web tool that should be able to predict the box office revenu
 ## Data Set:
 1. IMDb and Box Office Mojo Movie/TV/OTT Data (Bulk Data SAMPLE) (AWS Data Exchange Product)
 2. IMDb Essential Metadata for Movies/TV/OTT (Bulk Data SAMPLE) (AWS Data Exchange Product)
-
-
+3. https://www.kaggle.com/datasets/igorkirko/wwwboxofficemojocom-movies-with-budget-listed
+4. https://datasets.imdbws.com/
