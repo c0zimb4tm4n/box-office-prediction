@@ -38,3 +38,14 @@
   - visual_charts : Graphical representations of trends (e.g., bar charts, line graphs).
 - Assumptions:
   - None
+
+# Sequence Diagrams
+
+## Analytics Dashboard Sequence Diagram
+
+![Alt text](../images/Analytics_diagram.html "Analytics")
+
+
+
+
+
