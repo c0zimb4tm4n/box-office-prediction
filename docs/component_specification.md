@@ -18,14 +18,15 @@
 ## Component 2: Box Office Prediction Model Interface
 - Name: boxOfficePredictor
 - What it does:
-  - Interfaces with the machine learning model to predict potential box office earnings based on input data.
+  - Train a machine learning model to predict potential box office earnings based on input data.
 - Inputs:
-  - movie_features (Array): An array of normalized features extracted from user input relevant to the ML model.
+  - movie_features (Vector): A multi-dimensinal array of  normlaized and encoded features extracted from user input relevant to the ML model.
 - Outputs:
   - predicted_revenue (Float): The predicted box office revenue.
   - confidence_interval (Tuple of Floats): A tuple representing the lower and upper bounds of the predicted revenue confidence interval.
 - Assumptions:
-  - The machine learning model is trained.
+  - The machine learning model is trained with no significant overfitting and bias and is able to perform well on new unseen movies
+  - The tabular data of the inputs fits well within the parameters of the XGBoost model as suggested
 
 ## Component 3: Historical Data Analysis Dashboard
 - Name: historicalDataAnalyzer
@@ -40,6 +41,9 @@
   - None
 
 # Sequence Diagrams
+
+## Overall Component Interaction diagram for use-cases
+![Alt text](diag.png)
 
 ## Movie Data Input Interface Sequence Diagram
 
