@@ -41,6 +41,11 @@
 
 # Sequence Diagrams
 
+## Movie Data Input Interface Sequence Diagram
+
+![Untitled](https://github.com/c0zimb4tm4n/box-office-prediction/assets/25545650/edea5159-094c-4422-8d67-7f056972ed5f)
+
+
 ## Analytics Dashboard Sequence Diagram
 
 ![analyticscomp](https://github.com/c0zimb4tm4n/box-office-prediction/assets/75391092/f40ca729-97ae-423d-b667-9e29a0baabc9)
