@@ -1,6 +1,6 @@
-#Component Specifications
+# Component Specifications
 
-##Component 1: Movie Data Input Interface
+## Component 1: Movie Data Input Interface
 - Name: movieDataInput
 - What it does:
   - Provides a user interface for inputting hypothetical movie scenarios, including cast, crew, genre, and other production details.
@@ -15,7 +15,7 @@
   - User has all necessary information about the hypothetical movie.
   - All input data is validated for format and completeness.
 
-##Component 2: Box Office Prediction Model Interface
+## Component 2: Box Office Prediction Model Interface
 - Name: boxOfficePredictor
 - What it does:
   - Interfaces with the machine learning model to predict potential box office earnings based on input data.
