@@ -26,3 +26,15 @@
   - confidence_interval (Tuple of Floats): A tuple representing the lower and upper bounds of the predicted revenue confidence interval.
 - Assumptions:
   - The machine learning model is trained.
+
+## Component 3: Historical Data Analysis Dashboard
+- Name: historicalDataAnalyzer
+- What it does:
+  - Analyzes historical data to show trends and insights relevant to the user’s query.
+- Inputs:
+  - query_parameters (Dictionary): A dictionary with keys such as 'genre', 'cast', 'crew', 'time_period'.
+- Outputs (with type information):
+  - trends_report (String): A statistical summary of insights.
+  - visual_charts : Graphical representations of trends (e.g., bar charts, line graphs).
+- Assumptions:
+  - None
