@@ -43,7 +43,8 @@
 
 ## Analytics Dashboard Sequence Diagram
 
-![Alt text](../images/Analytics_diagram.html "Analytics")
+![analyticscomp](https://github.com/c0zimb4tm4n/box-office-prediction/assets/75391092/db5595fe-50b5-4c6c-9d0b-2d96938107d6)
+
 
 
 
