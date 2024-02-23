@@ -2,8 +2,11 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-film_data = pd.read_csv('data_clean_v2.csv')
+script_directory = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_directory, 'data_clean_v2.csv')
+film_data = pd.read_csv(file_path)
 
 st.header('Popcorn Pulse', divider='red')
 st.title('Film Analytics Dashboard')
