@@ -28,13 +28,9 @@ with tab2:
 
 with tab3:
    st.header('Revenue by Genre')
-   # Fill NaN values with 0
    film_data['Revenue'] = pd.to_numeric(film_data['Revenue'].replace('[\$,]', '', regex=True), errors='coerce')
-
-   # Group by 'genres' and sum 'Revenue'
    revenue_by_genre = film_data.groupby('genres')['Revenue'].sum().sort_values(ascending=False)
 
-   # Plot the bar chart
    fig, ax = plt.subplots()
    revenue_by_genre.plot(kind='bar', ax=ax, color='salmon')
    ax.set_xlabel('Genres')
