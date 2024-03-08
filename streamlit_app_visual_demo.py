@@ -1,11 +1,13 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 import os
 
 script_directory = os.path.dirname(os.path.abspath(__file__))
-file_path = os.path.join(script_directory, 'data_clean_v2.csv')
+file_path = os.path.join(script_directory, 'data_clean_v5.csv')
 film_data = pd.read_csv(file_path)
 
 st.header('Popcorn Pulse', divider='red')
@@ -17,6 +19,8 @@ tab6, tab7, tab8, tab9, tab10 = st.tabs(["Average Rating by Genres","Way of pres
                                           "Runtime vs. Average Rating", "Average Revenue by Actor", "Average Revenue by Actress"])
 tab11, tab12, tab13, tab14 = st.tabs(["Average Revenue by Director", "Average Rating by Director",
                                       "Number of Films by Genre", "Distribution of Film Runtime"])
+tab15, tab16, tab17, tab18 = st.tabs(["Box Plot: Rating by Genre", "Pair Plot for Avg Rating, Runtime and Revenue",
+                                      "Correlation Matrix for Avg Rating, Runtime and Revenue", "3D Scatter Plot: Runtime, Rating, and Revenue"])
 
 with tab1:
    st.header('Top Rows of the Dataset')
@@ -33,7 +37,7 @@ with tab2:
 
 with tab3:
    st.header('Revenue by Genre')
-   film_data['Revenue'] = pd.to_numeric(film_data['Revenue'].replace('[\$,]', '', regex=True), errors='coerce')
+   film_data['Revenue'] = pd.to_numeric(film_data['Revenue'].replace('[\\$,]', '', regex=True), errors='coerce')
    revenue_by_genre = film_data.groupby('genres')['Revenue'].sum().sort_values(ascending=False)
 
    fig, ax = plt.subplots()
@@ -134,4 +138,38 @@ with tab14:
    ax.set_xlabel('Runtime (minutes)')
    ax.set_ylabel('Frequency')
    ax.set_title('Distribution of Film Runtimes')
+   st.pyplot(fig)
+
+with tab15:
+   fig, ax = plt.subplots(figsize=(12, 8))
+   sns.boxplot(x='genres', y='averageRating', data=film_data, ax=ax)
+   ax.set_xticks(ax.get_xticks())
+   ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha='right')
+   ax.set_title('Box Plot: Rating by Genre')
+   st.pyplot(fig)
+
+with tab16:
+   selected_variables = ['averageRating', 'runtimeMinutes', 'Revenue']
+   pair_plot_data = film_data[selected_variables]
+   pairplot = sns.pairplot(pair_plot_data)
+   st.pyplot(pairplot.fig)
+
+with tab17:
+   selected_variables = ['averageRating', 'runtimeMinutes', 'Revenue']
+   correlation_matrix = film_data[selected_variables].corr()
+   fig, ax = plt.subplots()
+   sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=.5)
+   ax.set_title('Correlation Matrix for Avg Rating, Runtime and Revenue')
+   st.pyplot(fig)
+
+with tab18:
+   fig = plt.figure(figsize=(10, 8))
+   ax = fig.add_subplot(111, projection='3d')
+   ax.scatter(film_data['runtimeMinutes'], film_data['averageRating'], film_data['Revenue'], c='coral', marker='o', alpha=0.5)
+   ax.set_xlabel('Runtime (minutes)')
+   ax.set_ylabel('Average Rating')
+   ax.set_zlabel('Revenue')
+   ax.view_init(elev=20, azim=-45)
+   ax.set_title('3D Scatter Plot: Runtime, Rating, and Revenue')
+   ax.zaxis.labelpad = -2
    st.pyplot(fig)
