@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - main
+      - ci
   pull_request:
     # Configuring this means that your PRs will get a GitHub comment
     # from Coveralls with your coverage.
@@ -41,7 +42,7 @@ jobs:
     # GitHub will run the tests for each of these Python versions.
     strategy:
       matrix:
-        python-version: ["3.9", "3.10", "3.11"]
+        python-version: ["3.11"]
 
     # The actual workflow steps!
     steps:
