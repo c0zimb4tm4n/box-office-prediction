@@ -1,6 +1,5 @@
 name: box_office
 channels:
-  - conda-forge
   - defaults
 dependencies:
   - python=3.11
@@ -10,3 +9,5 @@ dependencies:
   - numpy
   - ipykernel
   - streamlit
+  - pylint
+  - coverage
