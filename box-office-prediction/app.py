@@ -324,7 +324,6 @@ with tab3:
       key="runtime_revenue",
       )
    #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
-   
    # Predict button
    if st.button('Predict Revenue'):
       #input validation
