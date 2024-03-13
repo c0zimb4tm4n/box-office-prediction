@@ -5,6 +5,14 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
 
+
+# def local_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# local_css("styles.css")
+
+
 def ratings_input_validation(actors, actresses, directors, writers, production_company, genre):
    valid = True
    if genre == None:
@@ -31,7 +39,7 @@ def ratings_input_validation(actors, actresses, directors, writers, production_c
       "genre": genre
    }
 
-st.header('Box Office Genie', divider='red')
+st.header('Box Office Genie', divider='grey')
 
 #setup
 df = pd.read_csv("../data/cleaned/data_clean_v6.csv")
@@ -80,10 +88,14 @@ tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Pre
 with tab1:
    st.header("Movie Analytics Dashboard")
 
-   st.title('XXXX')
+   #st.title('XXXX')
 
-   genre_options = df['genres'].unique()
-   selected_genres = st.multiselect('Select genres:', options=genre_options, default=genre_options)
+   #genre_options = df['genres'].unique()
+   #selected_genres = st.multiselect('Select genres:', options=genre_options, default=genre_options)
+   genre_options = sorted(df['genres'].unique())  # Sorting genres alphabetically
+   default_genre = genre_options[0]  # Setting the default genre to the first genre alphabetically
+   selected_genres = st.selectbox('Select a genre:', options=genre_options, index=genre_options.index(default_genre))
+   
 
    # Create tabs for actors and actresses
    tabactor, tabactress = st.tabs(["Actors", "Actresses"])
