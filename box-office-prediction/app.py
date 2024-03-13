@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from packages.helpers import ratings_input_validation, predict_rating, predict_revenue
 
 
-
 ####setup####
 ## Reading the data for front-end ##
 df = pd.read_csv("../data/cleaned/data_clean_v6.csv")
@@ -39,7 +38,6 @@ genres_all.sort()
 genres_all = tuple(genres_all)
 
 ratings_model = joblib.load("./models/ratingModelv1.joblib")
-
 
 
 #### Declaring Tabs ####
