@@ -5,10 +5,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from packages.helpers import ratings_input_validation, predict_rating, predict_revenue
 
-st.header('Box Office Genie', divider='red')
+
 
 ####setup####
-
 ## Reading the data for front-end ##
 df = pd.read_csv("../data/cleaned/data_clean_v6.csv")
 actors_all = list(df['actor'].unique())
@@ -41,9 +40,11 @@ genres_all = tuple(genres_all)
 
 ratings_model = joblib.load("./models/ratingModelv1.joblib")
 
+
+
 #### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Predictor", "Box Office Revenue Predictor"])
-
+st.header('Box Office Genie', divider='red')
 #Setting up Tabs
 with tab1:
    st.header("Movie Analytics Dashboard")
