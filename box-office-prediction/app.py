@@ -3,37 +3,14 @@ import pandas as pd
 import joblib
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-def ratings_input_validation(actors, actresses, directors, writers, production_company, genre):
-   valid = True
-   if genre == None:
-      st.error('Please select a genre.', icon="🚨")
-      valid = False
-   if actors == []:
-      actors = ["missing"]
-   if actresses == []:
-      actresses = ["missing"]
-   if directors == []:
-      directors = ["missing"]
-   if writers == []:
-      writers = ["missing"]
-   if production_company == None:
-      production_company = ""
-      
-   return {
-      "valid": valid,
-      "actors":  actors, 
-      "actresses": actresses, 
-      "directors": directors, 
-      "writers": writers, 
-      "production_company": production_company, 
-      "genre": genre
-   }
+from packages.helpers import ratings_input_validation, predict_rating, predict_revenue
 
 st.header('Box Office Genie', divider='red')
 
-#setup
-df = pd.read_csv("data/cleaned/data_clean_v6.csv")
+####setup####
+
+## Reading the data for front-end ##
+df = pd.read_csv("../data/cleaned/data_clean_v6.csv")
 actors_all = list(df['actor'].unique())
 actors_all.remove("missing")
 actors_all.sort()
@@ -62,9 +39,9 @@ genres_all = list(df['genres'].unique())
 genres_all.sort()
 genres_all = tuple(genres_all)
 
-ratings_model = joblib.load("box-office-prediction/models/ratingModelv1.joblib")
+ratings_model = joblib.load("./models/ratingModelv1.joblib")
 
-#Declaring Tabs
+#### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Predictor", "Box Office Revenue Predictor"])
 
 #Setting up Tabs
@@ -133,32 +110,12 @@ with tab2:
 
       #input validation 
       inputs = ratings_input_validation(actors, actresses, directors, writers, production_company, genre)
-
-      sum_rating = 0
+      predicted_rating = predict_rating(inputs, runtime_minutes, genre, ratings_model)
       if inputs["valid"] == True:
-         for actor_predict in inputs["actors"]:
-            for actress_predict in inputs["actresses"]:
-               for director_predict in inputs["directors"] :
-                  for writer_predict in inputs["writers"]:
-                     new_data = pd.DataFrame([{
-                        'actor': actor_predict ,
-                        'actress': actress_predict,
-                        'director': director_predict,
-                        'writer': writer_predict,
-                        "Production_Company": inputs["production_company"],
-                        'runtimeMinutes': runtime_minutes,
-                        'genres': genre,
-                        'isAdult': 0
-                     }])
-                     predicted_rating = ratings_model.predict(new_data)
-                     #st.write(f'Predicted Rating: {predicted_rating[0]}')
-                     sum_rating = predicted_rating[0] + sum_rating
-         
-      
-         st.write(f'Predicted Rating: {sum_rating/(len(inputs["actors"])*len(inputs["actresses"])*len(inputs["directors"])*len(inputs["writers"]))}')
+         st.write(f'Predicted Ratings: {predicted_rating}')
 
 with tab3:
-   revenue_model = joblib.load("box-office-prediction/models/revenueModelv1.joblib")
+   revenue_model = joblib.load("./models/revenueModelv2.joblib")
    st.title('Movie Revenue Prediction')
    # Input fields
    actors = st.multiselect(
@@ -215,32 +172,20 @@ with tab3:
    
    # Predict button
    if st.button('Predict Revenue'):
-
-      #input validation 
+      #input validation
       revenue = ratings_input_validation(actors, actresses, directors, writers, production_company, genre)
-
-      sum_revenue = 0
-      if revenue["valid"] == True:
-         for actor_predict in revenue["actors"]:
-            for actress_predict in revenue["actresses"]:
-               for director_predict in revenue["directors"] :
-                  for writer_predict in revenue["writers"]:
-                     new_data = pd.DataFrame([{
-                        'actor': actor_predict ,
-                        'actress': actress_predict,
-                        'director': director_predict,
-                        'writer': writer_predict,
-                        "Production_Company": revenue["production_company"],
-                        'runtimeMinutes': runtime_minutes,
-                        'genres': genre,
-                        'isAdult': 0
-                     }])
-                     predicted_revenue = revenue_model.predict(new_data)
-                     #st.write(f'Predicted Rating: {predicted_rating[0]}')
-                     sum_revenue = predicted_revenue[0] + sum_revenue
-         
       
-         st.write(f'Predicted Rating: {sum_revenue/(len(revenue["actors"])*len(revenue["actresses"])*len(revenue["directors"])*len(revenue["writers"]))}')
+      try:
+         if revenue != inputs:
+            predicted_rating = predict_rating(revenue, runtime_minutes, genre, ratings_model)
+         predicted_revenue = predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_rating)
+
+      except NameError as e:
+         predicted_rating = predict_rating(revenue, runtime_minutes, genre, ratings_model)
+         predicted_revenue = predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_rating)
+      if revenue["valid"] == True:
+         st.write(f'Predicted Revenue: {predicted_revenue}')
+   
 
    # Input fields
    # actor2 = st.multiselect(
@@ -256,6 +201,3 @@ with tab3:
    # runtime_minutes2 = st.number_input('Runtime Minutes', min_value=0, value=150)
    # genres2 = st.text_input('Genres', value='Horror')
    # is_adult2 = st.selectbox('Is Adult', options=[0, 1], index=0)
-
-
-
