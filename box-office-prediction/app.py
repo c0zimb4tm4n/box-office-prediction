@@ -14,9 +14,6 @@ from packages.helpers import ratings_input_validation, predict_rating, predict_r
 
 # local_css("styles.css")
 
-
-
-
 st.header('Box Office Genie', divider='grey')
 
 
@@ -53,8 +50,6 @@ genres_all.sort()
 genres_all = tuple(genres_all)
 
 ratings_model = joblib.load("./models/ratingModelv1.joblib")
-
-
 
 #### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Predictor", "Box Office Revenue Predictor"])
@@ -206,35 +201,42 @@ with tab1:
 with tab2:
    st.title('Movie Rating Prediction')
    # Input fields
-   actors = st.multiselect(
+   genre_ratings  = st.selectbox(
+      'Primary Genre',
+      genres_all,
+      index=None,
+      key="genres_rating",
+      placeholder="Type genre..."
+    )
+   actors_ratings = st.multiselect(
       'Actor',
       actors_all,
       key="actors_rating",
       placeholder="Type lead actors names...",
       max_selections=3
     )
-   actresses = st.multiselect(
+   actresses_ratings = st.multiselect(
       'Actress',
       actresses_all,
       key="actresses_rating",
       placeholder="Type lead actresses names...",
       max_selections=3
     )
-   directors = st.multiselect(
+   directors_ratings = st.multiselect(
       'Directors',
       directors_all,
       key="directors_rating",
       placeholder="Type directors names...",
       max_selections=2
     )
-   writers = st.multiselect(
+   writers_ratings = st.multiselect(
       'Writers',
       writers_all,
       key="writers_rating",
       placeholder="Type lead actress's name...",
       max_selections=3
     )
-   production_company = st.selectbox(
+   production_company_ratings = st.selectbox(
       'Production House',
       production_companies,
       index=None,
@@ -242,7 +244,7 @@ with tab2:
       placeholder="Type production house's name..."
     )
    
-   runtime_minutes =  st.number_input(
+   runtime_minutes_ratings =  st.number_input(
       'Runtime in Minutes', 
       min_value=0, 
       max_value=300 ,
@@ -250,95 +252,93 @@ with tab2:
       key="runtime_rating",
       )
    
-   genre  = st.selectbox(
-      'Primary Genre',
-      genres_all,
-      index=None,
-      key="genres_rating",
-      placeholder="Type genre..."
-    )
+   
    #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
    
    # Predict button
    if st.button('Predict Rating'):
 
       #input validation 
-      inputs = ratings_input_validation(actors, actresses, directors, writers, production_company, genre)
-      predicted_rating = predict_rating(inputs, runtime_minutes, genre, ratings_model)
+      inputs = ratings_input_validation(actors_ratings, actresses_ratings, directors_ratings, writers_ratings, production_company_ratings, genre_ratings)
+      predicted_rating = predict_rating(inputs, runtime_minutes_ratings, genre_ratings, ratings_model)
       if inputs["valid"] == True:
-         st.write(f'Predicted Ratings: {predicted_rating}')
+         st.write(f'Predicted Ratings: {round(predicted_rating,2)}')
 
 with tab3:
    revenue_model = joblib.load("./models/revenueModelv2.joblib")
    st.title('Movie Revenue Prediction')
    # Input fields
-   actors = st.multiselect(
-      'Actor',
-      actors_all,
-      key="actors_revenue",
-      placeholder="Type lead actors names...",
-      max_selections=3
-    )
-   actresses = st.multiselect(
-      'Actress',
-      actresses_all,
-      key="actresses_revenue",
-      placeholder="Type lead actresses names...",
-      max_selections=3
-    )
-   directors = st.multiselect(
-      'Directors',
-      directors_all,
-      key="directors_revenue",
-      placeholder="Type directors names...",
-      max_selections=2
-    )
-   writers = st.multiselect(
-      'Writers',
-      writers_all,
-      key="writers_revenue",
-      placeholder="Type lead actress's name...",
-      max_selections=3
-    )
-   production_company = st.selectbox(
-      'Production House',
-      production_companies,
-      index=None,
-      key="pcs_revenue",
-      placeholder="Type production house's name..."
-    )
-   
-   runtime_minutes = st.number_input(
-      'Runtime in Minutes', 
-      min_value=0, 
-      max_value=300 ,
-      value=150,
-      key="runtime_revenue",
-      )
-   genre  = st.selectbox(
+
+   genre_revenue  = st.selectbox(
       'Primary Genre',
       genres_all,
       index=None,
       key="genres_revenue",
-      placeholder="Type genre..."
+      placeholder= genre_ratings if genre_ratings != None else "Type genre..."
     )
-   #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
+   actors_revenue = st.multiselect(
+      'Actor',
+      actors_all,
+      default=None if actors_ratings == [] else actors_ratings,
+      key="actors_revenue",
+      placeholder="Type lead actors names...",
+      max_selections=3
+    )
+   actresses_revenue = st.multiselect(
+      'Actress',
+      actresses_all,
+      default=None if actresses_ratings == [] else actresses_ratings,
+      key="actresses_revenue",
+      placeholder="Type lead actresses names...",
+      max_selections=3
+    )
+   directors_revenue = st.multiselect(
+      'Directors',
+      directors_all,
+      default=None if directors_ratings == [] else directors_ratings,
+      key="directors_revenue",
+      placeholder="Type directors names...",
+      max_selections=2
+    )
+   writers_revenue = st.multiselect(
+      'Writers',
+      writers_all,
+      default=None if writers_ratings == [] else writers_ratings,
+      key="writers_revenue",
+      placeholder="Type lead actress's name...",
+      max_selections=3
+    )
+   production_company_revenue = st.selectbox(
+      'Production House',
+      production_companies,
+      index=None,
+      key="pcs_revenue",
+      placeholder= production_company_ratings if production_company_ratings != None  else "Type production house's name..."
+    )
    
+   runtime_minutes_revenue = st.number_input(
+      'Runtime in Minutes', 
+      min_value=0, 
+      max_value=300 ,
+      value=runtime_minutes_ratings,
+      key="runtime_revenue",
+      )
+   #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
    # Predict button
    if st.button('Predict Revenue'):
       #input validation
-      revenue = ratings_input_validation(actors, actresses, directors, writers, production_company, genre)
+      revenue = ratings_input_validation(actors_revenue, actresses_revenue, directors_revenue, writers_revenue, production_company_revenue, genre_revenue)
       
       try:
          if revenue != inputs:
-            predicted_rating = predict_rating(revenue, runtime_minutes, genre, ratings_model)
-         predicted_revenue = predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_rating)
+            predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
+         predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
 
       except NameError as e:
-         predicted_rating = predict_rating(revenue, runtime_minutes, genre, ratings_model)
-         predicted_revenue = predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_rating)
+         predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
+         predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
       if revenue["valid"] == True:
-         st.write(f'Predicted Revenue: {predicted_revenue}')
+         st.write(f'Predicted Revenue: ${round(predicted_revenue / 1_000_000, 1) } million')
    
 
    # Input fields
