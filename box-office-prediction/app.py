@@ -33,7 +33,7 @@ def ratings_input_validation(actors, actresses, directors, writers, production_c
 st.header('Box Office Genie', divider='red')
 
 #setup
-df = pd.read_csv('cleaned_data/data_clean_v5.csv')
+df = pd.read_csv("data/cleaned/data_clean_v6.csv")
 actors_all = list(df['actor'].unique())
 actors_all.remove("missing")
 actors_all.sort()
@@ -62,7 +62,7 @@ genres_all = list(df['genres'].unique())
 genres_all.sort()
 genres_all = tuple(genres_all)
 
-ratings_model = joblib.load("./helpers/ratingModelv1.joblib")
+ratings_model = joblib.load("box-office-prediction/models/ratingModelv1.joblib")
 
 #Declaring Tabs
 tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Predictor", "Box Office Revenue Predictor"])
@@ -158,7 +158,7 @@ with tab2:
          st.write(f'Predicted Rating: {sum_rating/(len(inputs["actors"])*len(inputs["actresses"])*len(inputs["directors"])*len(inputs["writers"]))}')
 
 with tab3:
-   revenue_model = joblib.load("./helpers/revenueModelv1.joblib")
+   revenue_model = joblib.load("box-office-prediction/models/revenueModelv1.joblib")
    st.title('Movie Revenue Prediction')
    # Input fields
    actors = st.multiselect(
