@@ -58,83 +58,139 @@ ratings_model = joblib.load("./models/ratingModelv1.joblib")
 
 #### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(["Movie Analytics Dashboard", "IMDb Movie Ratings Predictor", "Box Office Revenue Predictor"])
-st.header('Box Office Genie', divider='red')
 
 #Setting up Tabs
 with tab1:
-   st.header("Movie Analytics Dashboard")
+   st.title("Movie Analytics Dashboard")
 
    #st.title('XXXX')
 
    #genre_options = df['genres'].unique()
    #selected_genres = st.multiselect('Select genres:', options=genre_options, default=genre_options)
-   genre_options = sorted(df['genres'].unique())  # Sorting genres alphabetically
-   default_genre = genre_options[0]  # Setting the default genre to the first genre alphabetically
-   selected_genres = st.selectbox('Select a genre:', options=genre_options, index=genre_options.index(default_genre))
    
 
-   # Create tabs for actors and actresses
+
    tabactor, tabactress = st.tabs(["Actors", "Actresses"])
 
 
    with tabactor:
 
-      # Top actors by average revenue
-      st.header('Top Actors by Average Revenue in Selected Genres')
+      
+      genre_options = sorted(df['genres'].unique())
+      excluded_genres = ['Documentary', 'News', 'Western']
+      filtered_genre_options = [genre for genre in genre_options if genre not in excluded_genres]
+      default_genre = genre_options[0]  
+      selected_genres = st.selectbox('Select a genre:', options=filtered_genre_options, index=filtered_genre_options.index(default_genre))
+
+
+      st.header(f'Top Actors by Average Revenue in {selected_genres}')
       top_n_actors = st.number_input('Number of top actors to display:', min_value=1, value=5, step=1)
-      genre_filtered_df = df[df['genres'].apply(lambda x: any(genre in x for genre in selected_genres))]
-      top_actors_df = genre_filtered_df.groupby('actor')['Revenue_InflationCorrected'].mean().nlargest(top_n_actors).reset_index()
+
+      # genre_filtered_df = df[df['genres'].apply(lambda x: any(genre in x for genre in selected_genres))]
+      # top_actors_df = genre_filtered_df.groupby('actor')['Revenue_InflationCorrected'].mean().nlargest(top_n_actors).reset_index()
+      # unique_movies_per_actor = df.groupby('actor')['tconst'].nunique().reset_index(name='unique_movies')
+      # genre_filtered_df = df[df['genres'].apply(lambda x: any(genre in x for genre in selected_genres))]
+      genre_filtered_df = df[df['genres'].str.contains(selected_genres)]
+
+
+      actor_movie_counts = genre_filtered_df.groupby('actor')['tconst'].nunique().reset_index(name='movie_count')
+      qualified_actors = actor_movie_counts[actor_movie_counts['movie_count'] >= 3]['actor']
+      filtered_df = genre_filtered_df[genre_filtered_df['actor'].isin(qualified_actors)]
+      top_actors_df = filtered_df.groupby('actor')['Revenue_InflationCorrected'].mean().nlargest(top_n_actors).reset_index()
+
+
+
+      custom_red_scale = [
+    [0, 'lightcoral'],
+    [0.5, 'red'],
+    [1.0, 'darkred']
+]      
       fig_top_actors = px.bar(top_actors_df, x='actor', y='Revenue_InflationCorrected',
                               title=f'Top {top_n_actors} Actors by Average Revenue',
-                              labels={'Revenue_InflationCorrected': 'Average Revenue'})
+                              labels={'actor': 'Actor', 'Revenue_InflationCorrected': 'Average Revenue'},
+                              color_discrete_sequence=['#C81621'],
+                              color='Revenue_InflationCorrected',  
+                              color_continuous_scale=custom_red_scale,
+                              hover_data={'Revenue_InflationCorrected': ':,.0f'})
+      
+      
       st.plotly_chart(fig_top_actors)
 
 
+      highest_revenue_actor = top_actors_df['actor'].iloc[0]
+
       st.header("Actor's Performance")
-      actor_filter = st.selectbox('Select an actor:', df['actor'].unique())
+
+      default_actor_index = list(df['actor'].unique()).index(highest_revenue_actor) if highest_revenue_actor in df['actor'].unique() else 0
+      actor_filter = st.selectbox('Select an actor:', options=df['actor'].unique(), index=default_actor_index)
+
       filtered_df = df[(df['actor'] == actor_filter) & (df['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
       grouped_df = filtered_df.groupby(['startYear', 'genres'])['Revenue_InflationCorrected'].sum().reset_index()
       title_list_df = filtered_df.groupby(['startYear', 'genres'])['primaryTitle'].apply(list).reset_index()
       merged_df = pd.merge(grouped_df, title_list_df, on=['startYear', 'genres'])
       fig = px.line(merged_df, x='startYear', y='Revenue_InflationCorrected', color='genres', markers=True,
-                     title=f'Historical Revenue Trend for {actor_filter} Across Selected Genres',
-                     labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'},
-                     hover_data=['primaryTitle'])
+                  title=f'Historical Revenue Trend for {actor_filter}: ℹ️ Double click on a Genre Below ℹ️',
+                  labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'},
+                  hover_data=['primaryTitle'])
       st.plotly_chart(fig)
 
 
       
 
    with tabactress:
-   # Top actresses by average revenue
-      st.header('Top Actresses by Average Revenue in Selected Genres')
+      genre_options_act = sorted(df['genres'].unique())
+      excluded_genres_act = ['Documentary', 'News', 'Western']
+      filtered_genre_options_act = [genre for genre in genre_options_act if genre not in excluded_genres_act]
+      default_genre_act = genre_options_act[0]  
+      selected_genres_act = st.selectbox('Select a genre: ', options=filtered_genre_options_act, index=filtered_genre_options_act.index(default_genre_act))
+
+      st.header(f'Top Actresses by Average Revenue in {selected_genres_act}')
       top_n_actresses = st.number_input('Number of top actresses to display:', min_value=1, value=5, step=1)
-      top_actresses_df = genre_filtered_df.groupby('actress')['Revenue_InflationCorrected'].mean().nlargest(top_n_actresses).reset_index()
+
+      
+      genre_filtered_df = df[df['genres'].str.contains(selected_genres_act)]
+
+
+      actress_movie_counts = genre_filtered_df.groupby('actress')['tconst'].nunique().reset_index(name='movie_count')
+      qualified_actresses = actress_movie_counts[actress_movie_counts['movie_count'] >= 3]['actress']
+      filtered_df = genre_filtered_df[genre_filtered_df['actress'].isin(qualified_actresses)]
+      top_actresses_df = filtered_df.groupby('actress')['Revenue_InflationCorrected'].mean().nlargest(top_n_actresses).reset_index()
+
+
+
+      custom_red_scale = [
+    [0, 'lightcoral'],
+    [0.5, 'red'],
+    [1.0, 'darkred']
+]      
       fig_top_actresses = px.bar(top_actresses_df, x='actress', y='Revenue_InflationCorrected',
-                                 title=f'Top {top_n_actresses} Actresses by Average Revenue',
-                                 labels={'Revenue_InflationCorrected': 'Average Revenue'})
+                              title=f'Top {top_n_actresses} Actresses by Average Revenue',
+                              labels={'actress': 'Actress', 'Revenue_InflationCorrected': 'Average Revenue'},
+                              color_discrete_sequence=['#C81621'],
+                              color='Revenue_InflationCorrected',  
+                              color_continuous_scale=custom_red_scale,
+                              hover_data={'Revenue_InflationCorrected': ':,.0f'})
+      
+      
       st.plotly_chart(fig_top_actresses)
 
-      st.header("Actress's Performance")
-      actress_filter = st.selectbox('Select an actress:', df['actress'].unique())
+
+      highest_revenue_actress = top_actresses_df['actress'].iloc[0]
+
+      st.header("Actresses' Performance")
+
+      default_actress_index = list(df['actress'].unique()).index(highest_revenue_actress) if highest_revenue_actress in df['actress'].unique() else 0
+      actress_filter = st.selectbox('Select an actress:', options=df['actress'].unique(), index=default_actress_index)
+
       filtered_df = df[(df['actress'] == actress_filter) & (df['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
       grouped_df = filtered_df.groupby(['startYear', 'genres'])['Revenue_InflationCorrected'].sum().reset_index()
-      fig = px.line(grouped_df, x='startYear', y='Revenue_InflationCorrected', color='genres',
-                     title=f'Historical Revenue Trend for {actress_filter} Across Selected Genres',
-                     labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'})
+      title_list_df = filtered_df.groupby(['startYear', 'genres'])['primaryTitle'].apply(list).reset_index()
+      merged_df = pd.merge(grouped_df, title_list_df, on=['startYear', 'genres'])
+      fig = px.line(merged_df, x='startYear', y='Revenue_InflationCorrected', color='genres', markers=True,
+                  title=f'Historical Revenue Trend for {actress_filter}: ℹ️ Double click on a Genre Below ℹ️',
+                  labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'},
+                  hover_data=['primaryTitle'])
       st.plotly_chart(fig)
-
-
-   production_revenue_df = genre_filtered_df.groupby('Production_Company')['Revenue_InflationCorrected'].sum().reset_index()
-
-   fig = px.treemap(production_revenue_df, path=['Production_Company'], values='Revenue_InflationCorrected',
-                  title='Market Share of Production Houses in Selected Genres',
-                  labels={'Production_Company': 'Production House', 'Revenue_InflationCorrected': 'Revenue'},
-                  color='Revenue_InflationCorrected', color_continuous_scale='RdYlGn',
-                  hover_data={'Production_Company': True, 'Revenue_InflationCorrected': ':,.2f'})
-
-   fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
-   st.plotly_chart(fig)
 
 
 
