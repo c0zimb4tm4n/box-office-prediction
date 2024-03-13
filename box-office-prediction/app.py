@@ -1,10 +1,9 @@
 import streamlit as st
 import pandas as pd
 import joblib
-import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
-from packages.helpers import ratings_input_validation, predict_rating, predict_revenue
+from packages.helpers import ratings_input_validation, predict_rating, predict_revenue, evaluate_predicted_rating, evaluate_predicted_revenue, has_crew_worked_before
 
 
 
@@ -276,14 +275,56 @@ with tab2:
    
    #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
    
+   col1, col2 = st.columns(2)
+   #input validation 
+   inputs = {}
+   predicted_rating = -1
    # Predict button
-   if st.button('Predict Rating'):
+   with col1:
+      if st.button('Predict Rating'):
+         inputs = ratings_input_validation(actors_ratings, actresses_ratings, directors_ratings, writers_ratings, production_company_ratings, genre_ratings)
+         predicted_rating = predict_rating(inputs, runtime_minutes_ratings, genre_ratings, ratings_model)
+         if inputs["valid"] == True:
+            st.write(f'Predicted Ratings: {round(predicted_rating,2)}')
+   with col2:
+      if inputs:
+        st.write("### Quick Insights")
+        # Define the content for each insight
+        query = {
+            "actor": inputs['actors'],
+            "actress": inputs['actresses'],
+            "director": inputs['directors'],
+            "genres": [genre_ratings]
+        }
+        prev_work = has_crew_worked_before(df, query)
+        ratings_results = evaluate_predicted_rating(df, predicted_rating, query)
+        print(ratings_results)
+        unique_content = ""
+        if prev_work:
+            unique_content+= "**The crew has previously worked in:** \n\n"
+            for tconst in prev_work:
+                link = f"https://www.imdb.com/title/{tconst}"
+                unique_content+= f"- [{df[df['tconst']==tconst]['primaryTitle'].iloc[0]}]({link}) \n\n"
+            st.info(unique_content)
+        else:
+            st.info("**The cast and crew combination is UNIQUE!**")
+        
+        for key in list(ratings_results.keys()):
+            isnegative = ratings_results[key][2] < 0
+            if ratings_results[key][0] != "missing":
+                sentence = "The predicted rating is "
+                sentence+=f"**{round(abs(ratings_results[key][2]))}%** "
+                if isnegative:
+                    sentence+="lower "
+                else:
+                    sentence+="higher "
+                sentence+=f"than the average {ratings_results[key][0]} movie"
+                if isnegative:
+                    st.error(sentence)
+                else:
+                    st.success(sentence)
+            print(sentence)
 
-      #input validation 
-      inputs = ratings_input_validation(actors_ratings, actresses_ratings, directors_ratings, writers_ratings, production_company_ratings, genre_ratings)
-      predicted_rating = predict_rating(inputs, runtime_minutes_ratings, genre_ratings, ratings_model)
-      if inputs["valid"] == True:
-         st.write(f'Predicted Ratings: {round(predicted_rating,2)}')
 
 with tab3:
    revenue_model = joblib.load("./models/revenueModelv2.joblib")
@@ -345,22 +386,63 @@ with tab3:
       key="runtime_revenue",
       )
    #is_adult = st.selectbox('Is Adult', options=[0, 1], index=0)
-   # Predict button
-   if st.button('Predict Revenue'):
-      #input validation
-      revenue = ratings_input_validation(actors_revenue, actresses_revenue, directors_revenue, writers_revenue, production_company_revenue, genre_revenue)
-      
-      try:
-         if revenue != inputs:
-            predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
-         predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
 
-      except NameError as e:
-         predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
-         predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
-      if revenue["valid"] == True:
-         st.write(f'Predicted Revenue: ${round(predicted_revenue / 1_000_000, 1) } million')
-   
+   colrev1, colrev2 = st.columns(2)
+   # Predict button
+   predicted_revenue = -1
+   #input validation
+   revenue = {}
+   with colrev1:
+      if st.button('Predict Revenue'):
+         revenue = ratings_input_validation(actors_revenue, actresses_revenue, directors_revenue, writers_revenue, production_company_revenue, genre_revenue)
+         try:
+            if revenue != inputs:
+               predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
+            predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
+
+         except NameError as e:
+            predicted_rating = predict_rating(revenue, runtime_minutes_revenue, genre_revenue, ratings_model)
+            predicted_revenue = predict_revenue(revenue, runtime_minutes_revenue, genre_revenue, revenue_model, predicted_rating)
+         if revenue["valid"] == True:
+            st.write(f'Predicted Revenue: ${round(predicted_revenue / 1_000_000, 1) } million')
+   with colrev2:
+      if revenue:
+         st.write("### Quick Insights")
+         # Define the content for each insight
+         query = {
+               "actor": revenue['actors'],
+               "actress": revenue['actresses'],
+               "director": revenue['directors'],
+               "genres": [genre_revenue]
+         }
+         prev_work = has_crew_worked_before(df, query)
+         revenue_results = evaluate_predicted_revenue(df, predicted_revenue, query)
+         print(revenue_results)
+         unique_content = ""
+         if prev_work:
+               unique_content+= "**The crew has previously worked in:** \n\n"
+               for tconst in prev_work:
+                  link = f"https://www.imdb.com/title/{tconst}"
+                  unique_content+= f"- [{df[df['tconst']==tconst]['primaryTitle'].iloc[0]}]({link}) \n\n"
+               st.info(unique_content)
+         else:
+               st.info("**The cast and crew combination is UNIQUE!**")
+
+         for key in list(revenue_results.keys()):
+               isnegative = revenue_results[key][2] < 0
+               if revenue_results[key][0] != "missing":
+                  sentence = "The revenue rating is "
+                  sentence+=f"**{round(abs(revenue_results[key][2]))}%** "
+                  if isnegative:
+                     sentence+="lower "
+                  else:
+                     sentence+="higher "
+                  sentence+=f"than the average {revenue_results[key][0]} movie"
+                  if isnegative:
+                     st.error(sentence)
+                  else:
+                     st.success(sentence)
+               print(sentence) 
 
    # Input fields
    # actor2 = st.multiselect(

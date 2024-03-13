@@ -76,3 +76,69 @@ def predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_ra
       
     return sum_revenue/(len(revenue["actors"])*len(revenue["actresses"])*len(revenue["directors"])*len(revenue["writers"]))
 
+def has_crew_worked_before(findata, query):
+    print(query)
+    actors, actresses, directors, genres = query.values()
+    tconsts_map ={}
+    for genre in genres:
+        for actor in actors:
+            filtered_data = findata[(findata['genres'] == genre) & (findata['actor'] == actor)]
+            for tconst in filtered_data['tconst'].unique():
+                if tconst in tconsts_map.keys():
+                    if actor not in tconsts_map[tconst]:
+                        tconsts_map[tconst].append(actor)
+                else:
+                    tconsts_map[tconst] = [actor]
+        for actress in actresses:
+            filtered_data = findata[(findata['genres'] == genre) & (findata['actress'] == actress)]
+            for tconst in filtered_data['tconst'].unique():
+                if tconst in tconsts_map.keys():
+                    if actress not in tconsts_map[tconst]:
+                        tconsts_map[tconst].append(actress)
+                else:
+                    tconsts_map[tconst] = [actress]
+        for director in directors:
+            filtered_data = findata[(findata['genres'] == genre) & (findata['director'] == director)]
+            for tconst in filtered_data['tconst'].unique():
+                if tconst in tconsts_map.keys():
+                    if director not in tconsts_map[tconst]:
+                        tconsts_map[tconst].append(director)
+                else:
+                    tconsts_map[tconst] = [director] 
+    return ([key for key, value in tconsts_map.items() if len(value)>=2])
+
+def evaluate_predicted_rating(findata, rating, query):
+    def get_max_by_factor(factor_name):
+        max_factor_rating = -1
+        max_factor_value =""
+        for factor in query[factor_name]:
+            avg_factor_rating = findata[findata[f'{factor_name}'] == factor]['averageRating'].mean()
+            if avg_factor_rating>max_factor_rating:
+                max_factor_rating = avg_factor_rating
+                max_factor_value = factor
+        return (max_factor_value, max_factor_rating)
+    results = {}
+    for key in query.keys():
+        max_val, max_rating = get_max_by_factor(f'{key}')
+        if max_val!= "" and max_rating!=-1:
+            results[f'{key}'] = [max_val, rating-max_rating, ((rating-max_rating)/max_rating)*100]
+    return results
+
+
+
+def evaluate_predicted_revenue(findata, rating, query):
+    def get_max_by_factor(factor_name):
+        max_factor_revenue = -1
+        max_factor_value =""
+        for factor in query[factor_name]:
+            avg_factor_revenue = findata[findata[f'{factor_name}'] == factor]['Revenue_InflationCorrected'].mean()
+            if avg_factor_revenue>max_factor_revenue:
+                max_factor_revenue = avg_factor_revenue
+                max_factor_value = factor
+        return (max_factor_value, max_factor_revenue)
+    results = {}
+    for key in query.keys():
+        max_val, max_revenue = get_max_by_factor(f'{key}')
+        if max_val!= "" and max_revenue!=-1:
+            results[f'{key}'] = [max_val, rating-max_revenue, ((rating-max_revenue)/max_revenue)*100]
+    return results
