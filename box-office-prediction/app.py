@@ -8,6 +8,17 @@ from packages.helpers import ratings_input_validation, predict_rating, predict_r
 
 
 
+# def local_css(file_name):
+#     with open(file_name) as f:
+#         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
+# local_css("styles.css")
+
+
+
+
+st.header('Box Office Genie', divider='grey')
+
 
 ####setup####
 ## Reading the data for front-end ##
@@ -53,10 +64,14 @@ st.header('Box Office Genie', divider='red')
 with tab1:
    st.header("Movie Analytics Dashboard")
 
-   st.title('XXXX')
+   #st.title('XXXX')
 
-   genre_options = df['genres'].unique()
-   selected_genres = st.multiselect('Select genres:', options=genre_options, default=genre_options)
+   #genre_options = df['genres'].unique()
+   #selected_genres = st.multiselect('Select genres:', options=genre_options, default=genre_options)
+   genre_options = sorted(df['genres'].unique())  # Sorting genres alphabetically
+   default_genre = genre_options[0]  # Setting the default genre to the first genre alphabetically
+   selected_genres = st.selectbox('Select a genre:', options=genre_options, index=genre_options.index(default_genre))
+   
 
    # Create tabs for actors and actresses
    tabactor, tabactress = st.tabs(["Actors", "Actresses"])
