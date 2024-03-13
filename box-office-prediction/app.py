@@ -124,7 +124,11 @@ with tab1:
       default_actor_index = list(df['actor'].unique()).index(highest_revenue_actor) if highest_revenue_actor in df['actor'].unique() else 0
       actor_filter = st.selectbox('Select an actor:', options=df['actor'].unique(), index=default_actor_index)
 
-      filtered_df = df[(df['actor'] == actor_filter) & (df['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
+
+      df['Revenue_InflationCorrected'] = df.groupby('tconst')['Revenue_InflationCorrected'].transform('mean')
+      df_unique_tconsts = df.drop_duplicates(subset=['actor', 'tconst'])   
+      filtered_df = df_unique_tconsts[(df_unique_tconsts['actor'] == actor_filter) & (df_unique_tconsts['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
+      
       grouped_df = filtered_df.groupby(['startYear', 'genres'])['Revenue_InflationCorrected'].sum().reset_index()
       title_list_df = filtered_df.groupby(['startYear', 'genres'])['primaryTitle'].apply(list).reset_index()
       merged_df = pd.merge(grouped_df, title_list_df, on=['startYear', 'genres'])
@@ -132,8 +136,14 @@ with tab1:
                   title=f'Historical Revenue Trend for {actor_filter}: ℹ️ Double click on a Genre Below ℹ️',
                   labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'},
                   hover_data=['primaryTitle'])
-      st.plotly_chart(fig)
 
+      fig.update_traces(hovertemplate="<br>".join([
+      "Year: %{x}",
+      "Revenue: %{y}",
+      "Movie(s) appeared in: %{customdata[0]}",
+   ]))
+
+      st.plotly_chart(fig)
 
       
 
@@ -182,7 +192,12 @@ with tab1:
       default_actress_index = list(df['actress'].unique()).index(highest_revenue_actress) if highest_revenue_actress in df['actress'].unique() else 0
       actress_filter = st.selectbox('Select an actress:', options=df['actress'].unique(), index=default_actress_index)
 
-      filtered_df = df[(df['actress'] == actress_filter) & (df['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
+      #filtered_df = df[(df['actress'] == actress_filter) & (df['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
+      df['Revenue_InflationCorrected'] = df.groupby('tconst')['Revenue_InflationCorrected'].transform('mean')
+      df_unique_tconsts = df.drop_duplicates(subset=['actress', 'tconst'])   
+      filtered_df = df_unique_tconsts[(df_unique_tconsts['actress'] == actress_filter) & (df_unique_tconsts['genres'].apply(lambda x: any(genre in x for genre in selected_genres)))]
+
+
       grouped_df = filtered_df.groupby(['startYear', 'genres'])['Revenue_InflationCorrected'].sum().reset_index()
       title_list_df = filtered_df.groupby(['startYear', 'genres'])['primaryTitle'].apply(list).reset_index()
       merged_df = pd.merge(grouped_df, title_list_df, on=['startYear', 'genres'])
@@ -190,6 +205,12 @@ with tab1:
                   title=f'Historical Revenue Trend for {actress_filter}: ℹ️ Double click on a Genre Below ℹ️',
                   labels={'startYear': 'Year', 'Revenue_InflationCorrected': 'Revenue', 'genres': 'Genre'},
                   hover_data=['primaryTitle'])
+      
+      fig.update_traces(hovertemplate="<br>".join([
+      "Year: %{x}",
+      "Revenue: %{y}",
+      "Movie(s) appeared in: %{customdata[0]}",
+   ]))
       st.plotly_chart(fig)
 
 
