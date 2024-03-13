@@ -254,7 +254,7 @@ with tab2:
       'Writers',
       writers_all,
       key="writers_rating",
-      placeholder="Type lead actress's name...",
+      placeholder="Type writers name...",
       max_selections=3
     )
    production_company_ratings = st.selectbox(
@@ -326,7 +326,7 @@ with tab3:
       writers_all,
       default=None if writers_ratings == [] else writers_ratings,
       key="writers_revenue",
-      placeholder="Type lead actress's name...",
+      placeholder="Type writers name...",
       max_selections=3
     )
    production_company_revenue = st.selectbox(
