@@ -80,6 +80,8 @@ jobs:
       - name: Install additional development dependencies
         run: |
           conda install --yes coverage
+          conda install --yes -c conda-forge gdown
+
       
       # If there are any other steps in order for your tests to
       # run successfully, you can add those steps here!
