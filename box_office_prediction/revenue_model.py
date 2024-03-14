@@ -57,7 +57,7 @@ def train_movie_revenue_model(df: pd.DataFrame):
     model_revenue.fit(X_train, y_train, eval_set=(X_test, y_test), early_stopping_rounds=50, verbose=100)
 
     # Save the model
-    joblib.dump(model_revenue, 'revenueModelv2.joblib')
+    #joblib.dump(model_revenue, 'revenueModelv2.joblib')
 
     return model_revenue
 
