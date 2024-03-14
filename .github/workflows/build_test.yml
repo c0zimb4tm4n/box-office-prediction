@@ -82,7 +82,6 @@ jobs:
           conda install --yes coverage
           conda install --yes -c conda-forge gdown
 
-
       - name: Fetch trained models
         run: |
           gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib
