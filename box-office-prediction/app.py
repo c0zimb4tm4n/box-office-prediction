@@ -51,7 +51,7 @@ import streamlit as st
 import pandas as pd
 import joblib
 import plotly.express as px
-from packages.helpers import (
+from helpers import (
     ratings_input_validation,
     predict_rating,
     predict_revenue,
