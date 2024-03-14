@@ -93,12 +93,12 @@ jobs:
       # Next step: run pylint. Anything less than 10/10 will fail.
       - name: Lint with pylint
         run: |
-          pylint box-office-prediction
+          pylint box_office_prediction
+          pylint scripts
 
       # Next step: run the unit tests with code coverage.
       - name: Unit tests
         run: |
-          cd entropy
           coverage run -m unittest discover
           coverage report
           coverage lcov
@@ -108,8 +108,8 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          base-path: entropy
-          path-to-lcov: entropy/coverage.lcov
+          base-path: box_office_prediction
+          path-to-lcov: box_office_prediction/coverage.lcov
           # The following two options are needed for "parallel"
           # runs - ie if you have a matrix of python versions.
           # This holds off on reporting code coverage to
@@ -118,21 +118,21 @@ jobs:
           flag-name: run ${{ join(matrix.*, ' - ') }}
           parallel: true
 
-  # # After all the parallel matrix runs for build_test are done
-  # # for the various python versions, we run this job to send the
-  # # final code coverage to Coveralls.
-  # finish:
-  #   # This job requires that build_test be finished before it
-  #   # can run.
-  #   needs: build_test
-  #   if: ${{ always() }}
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Coveralls Finished
-  #     uses: coverallsapp/github-action@master
-  #     with:
-  #       github-token: ${{ secrets.GITHUB_TOKEN }}
-  #       parallel-finished: true
-  #       # This says finish the parallel runs that we did above
-  #       # and send to Coveralls.
-  #       carryforward: "run-3.7,run-3.8,run-3.9,run-3.10"
+  # After all the parallel matrix runs for build_test are done
+  # for the various python versions, we run this job to send the
+  # final code coverage to Coveralls.
+  finish:
+    # This job requires that build_test be finished before it
+    # can run.
+    needs: build_test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
+        # This says finish the parallel runs that we did above
+        # and send to Coveralls.
+        carryforward: "run-3.7,run-3.8,run-3.9,run-3.10"
