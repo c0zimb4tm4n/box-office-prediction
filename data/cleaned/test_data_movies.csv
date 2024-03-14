@@ -1,0 +1,101 @@
+,tconst,actor,actress,director,producer,writer,averageRating,numVotes,titleType,primaryTitle,isAdult,startYear,runtimeMinutes,genres,inflation_corrector,Revenue_InflationCorrected,Production_Company
+0,tt0083511,Garrett Hedlund,Elizabeth Earl,Jaco Van Dormael,Lila Yacoub,Kate Angelo,6.5,5200,movie,The General's Daughter,0,1998,90,Horror,1.0411645111137688,52197756,Warner Bros.
+1,tt4178092,Tom Berenger,missing,Alex Garland,Can Yilmaz,Patrick Tobin,7.3,44104,movie,American Ninja 2: The Confrontation,0,2007,166,Action,1.3271339843375698,170113410,Sony Pictures Releasing
+2,tt0421994,Brad Pitt,Isla Fisher,Rodrigo García,David Yarnell,Tim Metcalfe,6.9,42165,movie,Dawn of the Dead,0,2019,90,Romance,1.898454828660436,25725183,Walt Disney Studios Motion Pictures
+3,tt3697626,Kenneth Branagh,Mallori Johnson,Noah Baumbach,missing,Lee Strobel,7.0,15474,movie,Silent Night,0,2018,109,Sci-Fi,1.1918390656230808,5647570,Oscilloscope
+4,tt2167266,RZA,Madeline Brewer,missing,Elizabeth Avellan,missing,5.8,49761,movie,Mr. Baseball,0,2007,94,Comedy,1.420277154989582,46497291,Universal Pictures
+5,tt1014759,Morgan Freeman,Twinkle Khanna,Jean-Pierre Jeunet,JoAnne Sellar,Charles S. Haas,7.8,129411,movie,"Turn Me On, Dammit!",0,2011,100,Romance,1.3079752915774157,2325564,Lions Gate Films
+6,tt7294150,Justin Long,Evan Rachel Wood,Peter Chelsom,Paula Weinstein,Sarah Koskoff,3.7,60287,movie,Gone,0,2022,102,Drama,1.7694657375145182,204575351,Magnolia Pictures
+7,tt0804522,Ye Liu,Katie Aselton,Jerry Rees,Will Packer,Michael Berg,6.2,11283,movie,Sonchiriya,0,2010,103,Romance,1.7694657375145182,6973291,Miramax
+8,tt0291341,Mohamed Fellag,Erika Christensen,missing,Daniel Crown,Ho-Leung Lau,7.7,98425,movie,Hotel Mumbai,0,1988,113,Horror,1.243072780678851,260845969,Paramount Vantage
+9,tt1174732,missing,Mía Maestro,Jean-François Pouliot,Robert Lorenz,missing,6.4,417423,movie,Donnie Darko,0,1987,101,Romance,1.1244861054729305,91964453,UTV Motion Pictures
+10,tt4680182,Mark Wahlberg,Cameron Diaz,Paul Fisher,Jennifer Gibgot,Ottessa Moshfegh,6.3,55818,movie,Drinking Buddies,0,2019,98,Action,1.243072780678851,58443804,Bleecker Street Media
+11,tt8373206,Vin Diesel,Abigail Cruttenden,Christian Alvart,Anthony Rhulen,Charles Dickens,5.8,50712,movie,Finding Dory,0,1998,108,Action,1.3079752915774157,1122352,Fox Searchligh
+12,tt0117887,Johnny Yong Bosch,Diane Lane,Marc Forster,Robert Teitel,Bin Wang,7.6,17750,movie,Goodbye Christopher Robin,0,2016,98,Drama,1.4152241259991734,4030262,Lions Gate Films
+13,tt1698641,Mike Vogel,Kriti Sanon,Mark Waters,Tracey Seaward,Robert Smigel,7.6,153955,movie,Match Point,0,2009,87,Crime,1.3079752915774157,9704778,Paramount Pictures
+14,tt0887719,Ralph Fiennes,Rebel Wilson,Zack Snyder,Aditya Chopra,missing,5.7,67693,movie,Spectre,0,2017,108,Fantasy,1.560174091141833,11431119,New Line Cinema
+15,tt0117107,Nonso Anozie,Anna Friel,David Gordon Green,Brian Grazer,missing,7.2,60888,movie,The Flash,0,2015,108,Action,1.0411645111137688,1230525002,Universal Pictures
+16,tt0445934,Matthew Douglas,Rachael Harris,Steven Soderbergh,Happy Walters,James DeMonaco,6.1,68667,movie,The Tuxedo,0,2005,101,Horror,1.177314720008037,206125698,Universal Pictures
+17,tt0870154,Unax Ugalde,Samantha Mathis,Bille Woodruff,Hamish McAlpine,Jack Amiel,7.1,61950,movie,Why Don't You Just Die!,0,2008,97,Comedy,1.3271339843375698,16232668,Walt Disney Studios Motion Pictures
+18,tt0097659,Alberto Reyes,Rose McGowan,Michael Pressman,Masayuki Mori,Daniel Coyle,6.1,221452,movie,Dora and the Lost City of Gold,0,1997,109,Fantasy,1.1244861054729305,88621704,Sony Pictures Releasing
+19,tt0118884,Martin Freeman,missing,Ralph Bakshi,John Schimmel,Jay Scherick,5.7,674471,movie,The Limey,0,2001,91,Adventure,1.3079752915774157,38610277,Neon
+20,tt5108476,Seann William Scott,Kelly Hu,Christophe Gans,Andy Cohen,Sjón,7.8,15565,movie,Not Without My Daughter,0,2007,117,History,1.2134349102175566,7769309,IFC Films
+21,tt0101917,Christopher Abbott,Teela LaRoux,missing,missing,Prakash Kapadia,6.9,599639,movie,G-Force,0,1998,128,Crime,1.2855702333587886,425170808,Universal Pictures
+22,tt0425112,Adam Brody,Paula Patton,Betty Thomas,Patricia Hicks,Jay Ward,6.8,53913,movie,Horns,0,2016,103,Adventure,1.2134349102175566,30460571,Freestyle Releasing
+23,tt0139668,Jason Alexander,Jennifer Lawrence,missing,Evzen Kolar,Adam Rifkin,7.5,10967,movie,Bill Cunningham: New York,0,2001,81,Comedy,1.4698601061263867,40899227,Reliance Entertainment
+24,tt1430607,Julian Richings,missing,Cameron Crowe,Rob Cohen,Howard Ashman,6.0,108923,movie,Doomsday,0,2022,96,Comedy,1.1918390656230808,8396203,Twentieth Century Fox
+25,tt8095860,Kevin Kline,missing,Peter Weir,Kelly Bush Novak,Suzanne Collins,7.5,186711,movie,The Last Exorcism,0,2021,95,Drama,1.4152241259991734,1201761,Lions Gate Films
+26,tt0110363,Michael Rapaport,Lisa Kudrow,Markus Schleinzer,Joel Silver,missing,5.7,188619,movie,Arthur Christmas,0,2014,104,Adventure,1.511418650793651,702979763,Sony Pictures Classics
+27,tt1486193,Colin Egglesfield,Elizabeth Debicki,Gilles Paquet-Brenner,Fauzar Nurdin,Jeff Rendell,6.0,57522,movie,Herbie Fully Loaded,0,2017,99,Comedy,1.3271339843375698,2300148,Twentieth Century Fox
+28,tt7552686,Anthony Mackie,Olivia Cooke,Robert Zemeckis,David Grumbach,Eric Schmid,7.3,90411,movie,The World to Come,0,2016,119,Drama,1.354598357776997,1210873,Miramax
+29,tt3704538,Martin Starr,missing,Lee Daniels,missing,Kazuki Nakashima,4.7,37779,movie,The Lucky One,0,2011,103,Thriller,1.1244861054729305,59213346,Paramount Pictures
+30,tt0780548,missing,Cricket Brown,Adam Wingard,missing,Robert Berger,4.6,28323,movie,Anna and the Apocalypse,0,2022,106,Thriller,1.0411645111137688,661999,New Line Cinema
+31,tt2828996,Sam Claflin,Charlize Theron,Roger Kumble,missing,Rick Berman,6.1,56461,movie,Red Tails,0,1991,112,Comedy,1.3079752915774157,52101427,Warner Bros.
+32,tt9185206,Parvin Dabas,Friederike Becht,Takehiko Inoue,Lisa Katselas,Elan Mastai,6.3,106061,movie,The ABCs of Death,0,2000,127,Horror,1.511418650793651,479762508,Ketchup Entertainment
+33,tt1587310,Jackie Earle Haley,Deepika Padukone,missing,Bhushan Kumar,Cressida Cowell,7.0,63088,movie,Mandy,0,1995,111,Romance,1.177314720008037,164495,Warner Bros.
+34,tt0150915,Steve Coogan,Penélope Cruz,Josie Rourke,David Heyman,Ron Mita,6.1,8129,movie,Lara Croft: Tomb Raider - The Cradle of Life,0,2021,104,Animation,1.243072780678851,3463680,Twentieth Century Fox
+35,tt1843866,Koo Kyo-hwan,Angelina Jolie,David O. Russell,Gauri Khan,Arash Amel,6.1,28982,movie,Willy's Wonderland,0,2009,112,History,1.4698601061263867,514052,Well Go USA Entertainment
+36,tt1051906,Tim Blake Nelson,Shawnee Smith,Brett Morgen,Nick Wechsler,Matthew Read,6.6,11519,movie,Win a Date with Tad Hamilton!,0,2012,112,Sci-Fi,3.352057205720572,415882571,Walt Disney Studios Motion Pictures
+37,tt5882970,Steve Carell,Kim Cattrall,P.J. Hogan,Robert Lantos,missing,5.1,130931,movie,The King's Choice,0,2000,124,Action,1.2134349102175566,15429707,Twentieth Century Fox
+38,tt0450314,Breckin Meyer,Vanessa Williams,Richard Kelly,Jung Ji-hoon,Dennis Shryack,6.4,144134,movie,Incident in a Ghostland,0,2022,92,Drama,2.0560188933873147,2637399,Miramax
+39,tt0361925,Ezra Miller,Ludivine Sagnier,Félix Enríquez Alcalá,Allen Fischer,Sadayuki Murai,7.0,16130,movie,Titane,0,2016,125,Comedy,1.7205081874647092,500469524,A24
+40,tt2382320,Hugh Laurie,Whoopi Goldberg,William Dear,Arnon Milchan,missing,7.3,190157,movie,Rush Hour,0,2005,127,Adventure,1.3079752915774157,15408278,Universal Pictures
+41,tt1255951,James Badge Dale,Alia Bhatt,Michael Pressman,Paul Feldsher,missing,6.8,17253,movie,Shanghai Noon,0,2017,108,Crime,1.4152241259991734,326595,Sony Pictures Classics
+42,tt1242460,Kellan Lutz,Claire Foy,Dean Parisot,missing,Peter Laird,4.4,45819,movie,Confetti,0,2006,117,Drama,1.3973566423304105,16761354,Warner Bros.
+43,tt1838544,Patrick Stewart,Shraddha Kapoor,André Øvredal,Sajid Nadiadwala,Bryan Woods,6.8,400931,movie,The Gunman,0,1997,106,Thriller,1.2695546379897251,98615729,Summit Entertainment
+44,tt0096461,Chiwetel Ejiofor,Joely Fisher,Shôjirô Nishimi,Andrés Martín,Stephen Levy,6.4,87827,movie,Christmas with the Kranks,0,2007,93,Comedy,1.7205081874647092,173001,Zeitgeist Films
+45,tt0964539,Daniel Craig,missing,Susanne Bier,Benoit Roland,Jonathan Lemkin,5.0,7505,movie,V for Vendetta,0,2014,89,Horror,1.1918390656230808,16608403,Miramax
+46,tt0145681,Charlie Heaton,Elisabeth Moss,Robert Eggers,Paul Mones,missing,6.1,31048,movie,The Expendables 2,0,2009,134,Action,2.0560188933873147,173469665,Roadside Attractions
+47,tt0091939,Ben Kingsley,Drew Barrymore,Conrad Vernon,Craig Zobel,Andrew Lanham,6.2,217411,movie,Mama,0,2021,121,Comedy,1.3973566423304105,18902348,Cohen Media Group
+48,tt8969332,Hrithik Roshan,Béatrice Dalle,Jonathan Milott,Toni Novella,Mark Rosner,8.0,10698,movie,Punchline,0,2018,103,Sci-Fi,1.3973566423304105,111053447,Miramax
+49,tt2806788,Jahi Di'Allo Winston,Alfre Woodard,Lenny Abrahamson,Michel Saint-Jean,David Loughery,6.1,34339,movie,Fred Claus,0,2004,90,Horror,1.287096174641795,29765687,Warner Bros.
+50,tt6906292,Chris Sarandon,Priyanka Chopra Jonas,Floria Sigismondi,David Puttnam,Ted Elliott,7.6,774632,movie,Diana,0,2022,99,Drama,1.4698601061263867,4504849,Reliance Big Pictures
+51,tt0314786,Boyd Holbrook,Anne Hathaway,Andrew Davis,Gordon Carroll,Richard Fire,7.3,13852,movie,Happy People: A Year in the Taiga,0,2011,89,Romance,2.831802973977695,391752517,Warner Bros.
+52,tt0213203,Max Thieriot,Shu Qi,Prachya Pinkaew,Walter Coblenz,Bradley Allenstein,5.2,24915,movie,Joe Bell,0,2013,112,Drama,1.8289435774309724,1806249379,Metro-Goldwyn-Mayer (MGM)
+53,tt0846308,LaKeith Stanfield,missing,Ashutosh Gowariker,Ari Lantos,John Goldrosen,7.5,29869,movie,Selfiee,0,2018,108,Crime,1.243072780678851,69200243,Fine Line Features
+54,tt1300851,missing,missing,John Patrick Shanley,Benoit Beaulieu,Aaron Blabey,6.1,300834,movie,Arthur and the Invisibles,0,2006,105,Adventure,1.177314720008037,91419529,Warner Bros.
+55,tt2450186,Clive Owen,Jennifer Lawrence,Guillaume Canet,missing,Farhad Samji,5.2,28214,movie,Shortbus,0,2003,117,Drama,1.2695546379897251,166531157,TriStar Pictures
+56,tt2788716,Cole Hauser,Radha Mitchell,Michael Cuesta,Koji Ichihashi,missing,5.9,19475,movie,Invasion U.S.A.,0,2003,103,Comedy,2.108664359861592,171639692,DreamWorks Distribution
+57,tt0303361,Tony Todd,Andrea Riseborough,Stephen Gaghan,Alan Marshall,Sofie Cramer,5.7,26337,movie,The Kid,0,1997,101,Drama,1.4152241259991734,181716235,Sony Pictures Releasing
+58,tt0105812,Charlie Sheen,Sakura Ando,Jaco Van Dormael,Samuel Goldwyn Jr.,Alessandro Camon,6.3,370355,movie,Mr. Holmes,0,2021,114,Action,2.108664359861592,82906055,Magnolia Pictures
+59,tt7775622,Chris Evans,Lily James,Shimit Amin,Lorne Michaels,Jim Kouf,6.4,17106,movie,Inspector Gadget,0,2013,112,Drama,1.2855702333587886,1645047,Paramount Pictures
+60,tt8399288,Demetrius Shipp Jr.,Maura Tierney,Mike Newell,Scott Kroopf,missing,5.7,15381,movie,Phoenix Forgotten,0,2006,114,Adventure,1.243072780678851,21197337,Strand Releasing
+61,tt0800240,Paolo Bonacelli,missing,James Wan,J.P. Williams,Seth Hoffman,5.5,18599,movie,Middle Men,0,2018,101,Horror,1.3079752915774157,3667203,n/
+62,tt1253864,Mel Gibson,Erika Christensen,Gérard Krawczyk,Adele Romanski,Ron Bass,6.2,290444,movie,Venom,0,2020,109,Horror,1.420277154989582,15868841,Walt Disney Studios Motion Pictures
+63,tt1234721,Gene Hackman,Linda Larkin,Paolo Sorrentino,Betty Thomas,Julia Walton,4.3,68843,movie,Ode to Joy,0,2019,94,Horror,1.0411645111137688,260694982,Paramount Pictures
+64,tt1001508,Joseph Fiennes,Margot Robbie,Giuseppe Tornatore,Eric Beckman,Joss Whedon,7.5,7617,movie,Band Aid,0,2018,92,Horror,1.6130333509793542,110008861,IFC Films
+65,tt1435513,Steven Brand,Christina Ricci,Mark Dindal,Marty Bowen,William Broyles Jr.,7.9,7391,movie,"Big Mommas: Like Father, Like Son",0,1996,119,War,2.575672020287405,510781914,Sony Pictures Releasing
+66,tt0109424,Issa Perica,Helen Buday,Francis Lawrence,Ram Bergman,missing,6.5,211229,movie,Step Up Revolution,0,1973,96,History,1.4152241259991734,64978655,Warner Bros.
+67,tt10731256,missing,Meg Ryan,Jake Schreier,Peter Adam Golden,David Koepp,5.6,217764,movie,Bedtime Stories,0,2000,103,Comedy,1.2695546379897251,50416553,Universal Pictures
+68,tt0842929,Sylvester Stallone,missing,Jonathan Kaplan,Todd Lieberman,missing,6.2,39422,movie,Blood and Chocolate,0,1991,113,Comedy,1.2855702333587886,31616315,Excel Entertainment
+69,tt0406816,missing,missing,missing,Paul Rosenberg,Maeve Binchy,5.1,36794,movie,Mr. Magorium's Wonder Emporium,0,2015,93,Drama,1.560174091141833,7950533,Paramount Pictures
+70,tt2948356,James Marshall,Lindsay Sloane,Rob Marshall,Keith Calder,Kirk DeMicco,6.0,7171,movie,Snow Day,0,2020,109,Romance,1.9993569553805768,133611212,Screen Gems
+71,tt6205872,Logan Marshall-Green,Scarlett Johansson,Andrew Fleming,James Wilson,Tommy Swerdlow,6.6,9254,movie,Long Day's Journey Into Night,0,2020,123,Mystery,1.1244861054729305,854654350,Paramount Classics
+72,tt1114677,missing,Eunice Cho,Cameron Crowe,Cassian Elwes,missing,5.6,8129,movie,Kalank,0,2007,117,Action,1.2855702333587886,9159870,Sony Pictures Releasing
+73,tt0244479,Matthew Goode,Frances McDormand,Bobby Farrelly,Butch Robinson,Adam De La Peña,7.0,84421,movie,Flatliners,0,1996,122,History,1.4698601061263867,140754470,Galaxy Internationa
+74,tt0108149,Riteish Deshmukh,Kiara Advani,Raja Gosnell,Dhilin Mehta,Erik Sommers,5.6,160613,movie,Free Willy,0,1995,127,Horror,1.287096174641795,2624418,GKIDS
+75,tt0105128,Rhys Ifans,Millie Bobby Brown,Joe Johnston,Peter Del Vecho,Ben Elton,5.9,41679,movie,Eating Out,0,2015,103,Crime,1.3973566423304105,9900739,Paladin
+76,tt12004038,Jesse Spencer,Cher,Billy Kent,Ralph Winter,Keith Beauchamp,6.5,53192,movie,Fearless,0,2006,128,Adventure,1.655989130434783,22050512,Sony Pictures Releasing
+77,tt0406375,Jason Alexander,Meryl Streep,Tony Gilroy,Nina Bisgaard,Kevin Etten,5.3,18851,movie,The In-Laws,0,1999,88,Sport,1.560174091141833,281637,Trimark Pictures
+78,tt0268695,Jean Dujardin,Carol Kane,Bruce Robinson,Barry Mendel,Anthony Peckham,6.3,11081,movie,Are You Here,0,1999,85,Romance,1.0411645111137688,47445040,Fox Searchligh
+79,tt9362722,Brendan Mackey,Diane Lane,Ash Brannon,missing,Andrew Knight,5.6,150969,movie,Ghost in the Shell 2: Innocence,0,2017,124,Crime,1.1244861054729305,19302404,Reliance Big Pictures
+80,tt0350261,David Oyelowo,Liana Liberato,Jeff Wadlow,Donald De Line,Eric LeMarque,6.4,24053,movie,The Divergent Series: Insurgent,0,2019,135,Horror,1.560174091141833,502255,Twentieth Century Fox
+81,tt0445922,Dolph Lundgren,Melanie Lynskey,Timur Bekmambetov,Jason Blum,Ashiesh Pandit,5.2,477985,movie,Juno,0,2011,94,Adventure,1.243072780678851,139140217,Lions Gate Films
+82,tt0116583,Sean Astin,Aubrey Plaza,Michael Pearce,missing,Adam Herz,5.7,209766,movie,6 Below: Miracle on the Mountain,0,2019,91,Horror,1.1244861054729305,2106014,Twentieth Century Fox
+83,tt1464335,William Moseley,Jenna Dewan,Frank Whaley,Ryan Kavanaugh,missing,5.8,18815,movie,Jesus Revolution,0,2019,93,Action,1.7205081874647092,66900743,A24
+84,tt0146309,James Franco,Aiysha Hart,Tom Hooper,missing,Chris Tebbetts,6.2,65522,movie,Howl,0,2005,113,Comedy,1.4152241259991734,70178589,Warner Bros.
+85,tt14362112,Jonathan Daniel Brown,Stephanie Hsu,Maxim Korostyshevsky,Buzz Feitshans,Randall Jahnson,6.1,141567,movie,Robin Hood: Prince of Thieves,0,1985,105,Fantasy,1.243072780678851,47559503,Roadside Attractions
+86,tt0210382,Dave Bautista,Li Sun,Kore-eda Hirokazu,Paul Trijbits,Matt Manfredi,6.4,381279,movie,Animal Factory,0,2008,121,Documentary,2.575672020287405,16281937,Columbia Pictures
+87,tt2513074,Hugh Jackman,Rebecca Gayheart,Daisuke Yoshida,Rick Schwartz,Dick Clement,6.5,142624,movie,Drug War,0,2003,105,Drama,1.511418650793651,246073736,Lions Gate Films
+88,tt1535109,Seamus Davey-Fitzpatrick,Eva Green,Randall Miller,Tom Kalin,Adam Mervis,5.7,6763,movie,Main Prem Ki Diwani Hoon,0,2001,102,Western,2.457274193548387,8380543,Eros Worldwide
+89,tt4922692,Charles S. Dutton,Vera Farmiga,Cary Joji Fukunaga,Elie Samaha,David Bourla,6.1,225450,movie,We Were Soldiers,0,1983,92,Comedy,1.6937298499166202,126851379,Lions Gate Films
+90,tt1082886,Collin Chou,Diane Kruger,Jared Stern,Antonio Chavarrías,Matt Manfredi,6.7,71375,movie,Drop Zone,0,2016,90,Crime,1.2695546379897251,6973291,Film Ventures Internationa
+91,tt3286052,Chris Rock,Parker Posey,Jim Kouf,Pippa Cross,Jane Austen,6.7,12761,movie,The Roundup,0,2001,98,History,1.0,7985008,Warner Bros.
+92,tt0118798,Brian Cox,Marie-Laure Dougnac,Wes Anderson,Julia Chasman,Michel Faber,7.3,16126,movie,Jimi: All Is by My Side,0,1998,104,Crime,1.2134349102175566,23913070,Miramax
+93,tt7778680,Chris Tucker,Kirsten Dunst,Luca Guadagnino,Sriram Das,missing,5.4,154568,movie,Half Nelson,0,1991,121,Adventure,1.243072780678851,4585900,A24
+94,tt2625810,Tye Sheridan,Elizabeth Olsen,Dan Gilroy,Joe Roth,John J. McLaughlin,7.3,6145,movie,The Devil's Rejects,0,2021,107,Adventure,1.354598357776997,2666069,Walt Disney Studios Motion Pictures
+95,tt1748122,John C. Reilly,Mary Makhatho,missing,Janet Healy,Martin Herron,6.8,17377,movie,The Adventures of Ford Fairlane,0,2007,102,Mystery,4.196997245179063,56650574,IFC Films
+96,tt1876451,Woody Harrelson,Adèle Exarchopoulos,Peter MacDonald,missing,Nick Palmisciano,6.4,51874,movie,Trolls World Tour,0,2020,99,Adventure,1.2695546379897251,3054707,IFC Films
+97,tt0409459,Zach Galifianakis,Eileen Atkins,Harry Elfont,Bill Holderman,Seth M. Sherwood,6.4,9697,movie,Ishtar,0,1990,94,Comedy,1.6937298499166202,204101859,Universal Pictures
+98,tt0450259,Romeo Miller,missing,Stephen Frears,George Clooney,Sarah Thorp,6.2,53743,movie,Redemption,0,2015,83,Action,1.3079752915774157,1118931314,Twentieth Century Fox
+99,tt0149624,Alan Alda,Elle Fanning,Laure de Clermont-Tonnerre,Douglas Wick,David Griffiths,6.1,155964,movie,Carlito's Way,0,2012,124,Comedy,1.2855702333587886,154676340,Paramount Pictures
