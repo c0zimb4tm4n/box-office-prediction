@@ -100,6 +100,7 @@ jobs:
       # Next step: run the unit tests with code coverage.
       - name: Unit tests
         run: |
+          cd box_office_prediction
           coverage run -m unittest discover
           coverage report
           coverage lcov
