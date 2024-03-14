@@ -1,166 +1,136 @@
-# box-office-prediction
-A tool that aims to predict box office revenue of hypothetical movies based on the cast and crew.
-
+# Box Office Prediction
 [![Coverage Status](https://coveralls.io/repos/github/c0zimb4tm4n/box-office-prediction/badge.svg?branch=main)](https://coveralls.io/github/c0zimb4tm4n/box-office-prediction?branch=main)
 ![Workflow Status](https://github.com/c0zimb4tm4n/box-office-prediction/actions/workflows/build_test.yml/badge.svg)
+Our project introduces an innovative tool designed to aid the movie production industry. Aimed at producers, directors, casting directors, and industry insiders, this tool leverages predictive analytics to forecast the potential revenue of movies that are still in the conceptual phase.
 
-## Project Type:
+## Project Type
 Tool
 
 ## Team Members
-
 #### Apratim Tripathi
 #### Trisha Banerjee
 #### Rohit Chandiramani
 #### Zongze Li
 
 
-## Question of interest:
-We seek to build a web tool that should be able to predict the box office revenues, with resonable accuracy, of hypothetical movies based on a hypothetical cast and crew.
 
-## Goals:
-1. Develop a tool for predicting box office collections of hypothetical movies.
-2. Utilize two datasets: one containing data of over 5000 movies with complete cast and crew details, and another with their respective box office information.
-3. Train a machine learning model on these datasets to understand the correlation between cast/crew composition and box office success.
-4. Enable users to input a desired cast and crew for a tentative movie.
-5. Use the trained model to predict the potential box office collection of this hypothetical movie.
+## Table of Contents
 
-## Data Set:
-1. IMDb and Box Office Mojo Movie/TV/OTT Data (Bulk Data SAMPLE) (AWS Data Exchange Product)
-2. IMDb Essential Metadata for Movies/TV/OTT (Bulk Data SAMPLE) (AWS Data Exchange Product)
-3. https://www.kaggle.com/datasets/igorkirko/wwwboxofficemojocom-movies-with-budget-listed
-4. https://datasets.imdbws.com/
+- [Key Features](#key-features)
+- [Our Goal](#our-goal)
+- [Data Sources](#data-sources)
+- [Software Dependencies and License Information](#software-dependencies-and-license-information)
+- [Directory Summary](#directory-summary)
+- [Tutorial For Using the Tool](tutorial-for-using-the-tool)
+- [Video Demonstration](video-demonstration)
 
-## Software dependencies and license information
 
-All of the necessary implementations in this repository can be carried out using the following software.  All software is open source.
+## Key Features
+#### Revenue Prediction
+By inputting data such as actors, actresses, writers, directors, and genres, our tool provides an estimated revenue figure for hypothetical movies.
 
-#### Programming language: 
+#### Analytics Dashboard
+Users can explore in-depth analytics showing the performance of actors and actresses across various genres over the years. This valuable insight assists in making informed decisions about casting and genre selection.
 
-- Python version 3.0 and above 
+#### Strategic Decision Making
+The tool aids in strategizing the hiring process, focusing on maximizing profits by selecting the ideal combination of talent and genre based on historical data and predictive analysis.
 
-#### Python packages needed:
 
-- pandas
-- NumPy
-- scikit-learn
-- matplotlib
-- seaborn
-- CatBoost
-- joblib
-- beautifulsoup4
-- streamlit
+## Our Goal
+To empower industry players with data-driven insights, enabling them to make strategic decisions that enhance profitability and success in the competitive landscape of movie production.
 
-#### License Information:
 
-The MIT License is a permissive open-source software license that allows users to freely use, modify, distribute, and sublicense the software without restriction. The MIT license for this project is descriped in full in **LICENSE.txt**.
+## Data Sources
+#### 1. IMDb Non-Commercial Datasets
+The IMDb Non-Commercial Datasets provide subsets of IMDb's movie, TV, and celebrity data for personal and non-commercial use. These datasets, available for download in a gzipped, tab-separated-values (TSV) format, are updated daily and adhere to specific terms and conditions.
+
+Availability: Accessible at https://datasets.imdbws.com/, with updates provided daily.
+
+Datasets Overview:
+title.akas.tsv.gz: Alternative titles, regions, languages, and attributes.
+title.basics.tsv.gz: Basic title information including type/format, titles, years, runtime, and genres.
+title.crew.tsv.gz: Lists directors and writers per title.
+title.episode.tsv.gz: Details on TV series episodes.
+title.principals.tsv.gz: Principal cast/crew information, roles, and characters.
+title.ratings.tsv.gz: Ratings data, including average rating and vote count.
+name.basics.tsv.gz: Information on individuals, including names, birth/death years, professions, and notable titles.
+
+Link: [IMDb Data Files](https://datasets.imdbws.com/)
+
+#### 2. Movie Revenues from Box Office Mojo
+For a comprehensive analysis of box office trends, we have included data spanning from 1970 to 2023, sourced from Box Office Mojo. This dataset encompasses revenue information for movies released within this timeframe, providing a valuable asset for understanding box office dynamics over the years.
+
+The data was collected through a  web scraping script designed to extract movie revenue information. [Access the Box Office Mojo Scraping Script here](https://raw.githubusercontent.com/c0zimb4tm4n/box-office-prediction/main/scripts/data_extraction_EDA.ipynb)
+
+#### 3. Kaggle: U.S. Inflation Data
+To use inflation-corrected revenues, we used this dataset. This dataset encompasses the monthly U.S. Consumer Price Index (CPI), representing the average CPI across all American cities for each month. The CPI is a critical economic indicator, reflecting the average change over time in the prices paid by urban consumers for a market basket of consumer goods and services.
+
+Link: [Kaggle Dataset](https://www.kaggle.com/datasets/varpit94/us-inflation-data-updated-till-may-2021)
+
+## Software Dependencies and License Information
+The project is built using Python 3.0+ and several open-source Python packages such as pandas, NumPy, scikit-learn, and Streamlit. The complete list of dependencies can be found in requirements.txt. This project is licensed under the MIT License, with full details available in LICENSE.txt.
 
 
 ## Directory Summary
+.
+├── Examples
+│   └── example_images
+├── box_office_prediction
+│   ├── __pycache__
+│   ├── models
+│   ├── notebooks
+│   └── tests
+│       └── __pycache__
+├── data
+│   ├── cleaned
+│   └── raw
+├── docs
+└── scripts
+    └── __pycache__
 
-**Examples:** This folder contains an example with images of how to use the tool.
-
-**Box-office-prediction:** This folder contains streamlit app files, data cleaning, model training and test files.
-
-**Data:** This folder contains the data used in analyses with the latest cleaned data and raw data.
-
-**Docs:** This folder contains documentations of the project, including technology review and final presentation slides, function specification, component specification, demo, design, and milestone.
-
-**Scripts:** This folder contains data cleaning and model training files.
-
-**License.txt:** The MIT license used for this project.
-
-
-## Directory Structure
-The package is organized as follows:
-
-```
-box-office-prediction (master)  
-project/
-│
-├── Examples/
-│   ├── example_images/
-│   │   ├── example_image_1
-│   │   ├── example_image_2
-│   │   ├── example_image_3
-│   │   ├── example_image_4
-│   │   ├── example_image_5
-│   │   ├── example_image_6
-│   │   ├── example_image_7
-│   │   ├── example_image_8
-│   │   ├── example_image_9
-│   │   ├── example_image_10
-│   │   ├── example_image_11
-│   │   └── example_image_12
-│   └── README.md
-├── box-office-prediction/
-│   ├── .streamlit/
-│   │   └── config.toml
-│   ├── models/
-│   │   └── ratingModelv1.joblib
-│   ├── notebooks/
-│   │   ├── data_cleaning/
-|   |   │   ├── data_ratings_v3.py
-|   |   │   └── death_filter.py
-|   |   ├── Rating_Model.ipynb
-|   |   └── Revenue_Model.ipynb
-│   ├── tests/
-│   │   ├── __init__.py
-│   │   └── test_app.py
-│   ├── .DS_Store
-│   ├── __init__.py
-│   ├── app.py
-│   ├── helpers.py
-│   └── rating_model.py
-├── data/
-│   ├── cleaned/
-│   │   ├── data_clean_v5.csv
-│   │   ├── data_clean_v6.csv
-│   │   └── test_data_movies.csv
-│   ├── raw/
-│   │   └── tconsts_prd_company.csv
-│   └── InflationCPIs.csv
-├── docs/
-│   ├── Draft-technology_review_v3.pptx
-│   ├── Final Presentation Slides.pdf
-│   ├── component_specification.md
-│   ├── demo_recorded.webm
-│   ├── demo_recorded_.webm
-│   ├── diag.png
-│   ├── functional_specification.md
-│   └── milestone.png
-├── scripts/
-│   ├── Data_Ratings_v1.ipynb
-│   ├── Data_Ratings_v2.ipynb
-│   ├── Data_Ratings_v3.ipynb
-│   ├── __init__.py
-│   ├── data_extraction_EDA.ipynb
-│   ├── death-filter.ipynb
-│   └── generate_test_data.py
-├── .gitignore
-├── LICENSE
-├── README.md
-├── box_office_env.yml
-├── requirements.txt
-└── setup.py
-```
 
 ## Tutorial For Using the Tool
 
-#### Step 1: Download the Data
+#### Step 1: Cloning the Repository
+To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the Git Guide. Once Git is set up, clone the repository to your computer by executing the following command in your terminal
 
-The raw datasets can be found here. For additional data and source data, you can find them from [IMDb](https://datasets.imdbws.com/)
+`git clone git@github.com:c0zimb4tm4n/box-office-prediction.git`
 
-#### Step 2: Install necessary packages, download the model and the app.py file.
 
-#### Step 3: Run the app.py file
+#### Step 2: Navigate to the Project Directory
+Change into the project directory:
 
-Copy the app.py file path and in the terminal, enter command "streamlit run " + copied file path. In the opened website, navigate through tabs to use the desired analytic or predictive features.
+`cd box-office-prediction`
 
-**1. Movie Analytics Dashboard** This tab provides analysis and evaluations for actors and actresses. It provides a filter selection for genres and after doing that, one can find the top X actors or actresses for this genre, sorted by revenue. User can also select a specific actor or actress to view his or her historical revenue trend across different genres.
+#### Step 3: Create the Conda Environment
+Before creating the Conda environment, ensure you have Conda installed. If you need to install Conda, follow the Conda Installation Guide. With Conda installed, create the project environment using:
 
-**2. IMDb Movie Ratings Predictor** This tab provides prediction for potential film ratings. It provides a filter selection for genres and a vast selections of actors, actresses, directors, writers and production house from the drop down menu. User can only select one genre as the primary genre and one production company as the production house, but can select up to three for the rest categories. The user would also need to input a runtime length for the movie. After all the inputs, the user can click the predict button to view the predicted ratings and some followed-up analysis.
+`conda env create -f box_office_env.yml`
 
-**3. Box Office Revenue Predictor** This tab provides prediction for potential film revenues. Similar to the ratings predictor, it follows the same inputs as the ratings predictor, and will present the predicted revenues along with some followed-up analysis
+This command reads the box_office_env.yml file and sets up an environment named box_office with all the required Python dependencies.
 
-For a more detailed explanation of each tab and usage instructions, see the documentation of the app.py file or the examples folder.
+#### Step 4: Activate the Conda Environment
+Activate the newly created Conda environment:
+
+`conda activate box_office`
+
+#### Step 5: Download Required Models
+Use the gdown command to download necessary machine learning models into the correct project directory:
+`gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib`
+`gdown --id 1ypQ1VkEJp8c3If2941axznVLgST4mSyU -O box_office_prediction/models/ratingModelv2.joblib`
+
+These commands download the revenueModelv2.joblib and ratingModelv2.joblib models required for the application to function.
+
+#### Step 6: Run the Application
+With the environment set up and models downloaded, you can now run the application using Streamlit:
+`streamlit run box_office_prediction/app.py`
+
+#### Step 7: Deactivate the Conda Environment
+After using the application, you can deactivate the Conda environment by running:
+
+`conda deactivate`
+
+
+## Video Demonstration
+Access the demo here for a detailed understanding of the flow of our project.
+[Video Download](https://github.com/c0zimb4tm4n/box-office-prediction/blob/main/docs/demo_recorded.webm)
