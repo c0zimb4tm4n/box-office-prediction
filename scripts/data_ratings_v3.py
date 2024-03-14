@@ -7,12 +7,9 @@ import json
 import re
 from itertools import product
 
-import numpy as np
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
-from sklearn.metrics import mean_squared_error
-from sklearn.model_selection import train_test_split
 
 #pylint: disable=invalid-name, broad-exception-caught
 
