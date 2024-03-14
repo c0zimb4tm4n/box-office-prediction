@@ -3,15 +3,8 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.11
-  - pandas
-  - scikit-learn
-  - catboost
-  - numpy
-  - ipykernel
-  - streamlit
-  - pylint
-  - coverage
-  - requests
-  - beautifulsoup4
-  - joblib
+  - python >=3.11
+  - jupyter=1.0
+  - pip
+  - pip:
+    - -r requirements.txt
