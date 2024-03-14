@@ -1,6 +1,9 @@
 # box-office-prediction
 A tool that aims to predict box office revenue of hypothetical movies based on the cast and crew.
 
+[![Coverage Status](https://coveralls.io/repos/github/c0zimb4tm4n/box-office-prediction/badge.svg?branch=main)](https://coveralls.io/github/c0zimb4tm4n/box-office-prediction?branch=main)
+![Workflow Status](https://github.com/c0zimb4tm4n/box-office-prediction/actions/workflows/build_test.yml/badge.svg)
+
 ## Project Type:
 Tool
 
