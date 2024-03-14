@@ -429,46 +429,44 @@ with tab2:
             )
             if inputs["valid"] is True:
                 st.write(f"Predicted Ratings: {round(predicted_rating,2)}")
-    with col2:
-        if inputs:
-            st.write("### Quick Insights")
-            # Define the content for each insight
-            query = {
-                "actor": inputs["actors"],
-                "actress": inputs["actresses"],
-                "director": inputs["directors"],
-                "genres": [genre_ratings],
-            }
-            prev_work = has_crew_worked_before(df, query)
-            ratings_results = evaluate_predicted_rating(df, predicted_rating, query)
-            print(ratings_results)
-            unique_content = ""
-            if prev_work:
-                unique_content += "**The crew has previously worked in:** \n\n"
-                for tconst in prev_work:
-                    link = f"https://www.imdb.com/title/{tconst}"
-                    primary_title = df.loc[df['tconst'] == tconst, 'primaryTitle'].iloc[0]
-                    link = f"https://www.imdb.com/title/{tconst}"
-                    unique_content += f"- [{primary_title}]({link}) \n\n"
-                st.info(unique_content)
-            else:
-                st.info("**The cast and crew combination is UNIQUE!**")
+                with col2:
+                    if inputs:
+                        st.write("### Quick Insights")
+                        # Define the content for each insight
+                        query = {
+                            "actor": inputs["actors"],
+                            "actress": inputs["actresses"],
+                            "director": inputs["directors"],
+                            "genres": [genre_ratings],
+                        }
+                        prev_work = has_crew_worked_before(df, query)
+                        ratings_results = evaluate_predicted_rating(df, predicted_rating, query)
+                        print(ratings_results)
+                        unique_content = ""
+                        if prev_work:
+                            unique_content += "**The crew has previously worked in:** \n\n"
+                            for tconst in prev_work:
+                                link = f"https://www.imdb.com/title/{tconst}"
+                                matching_row = df.loc[df['tconst'] == tconst]
+                                primary_title = matching_row['primaryTitle'].iloc[0]
+                                link = f"https://www.imdb.com/title/{tconst}"
+                                unique_content += f"- [{primary_title}]({link}) \n\n"
+                            st.info(unique_content)
 
-            for key in list(ratings_results.keys()):
-                isnegative = ratings_results[key][2] < 0
-                if ratings_results[key][0] != "missing":
-                    sentence = "The predicted rating is "
-                    sentence += f"**{round(abs(ratings_results[key][2]))}%** "
-                    if isnegative:
-                        sentence += "lower "
-                    else:
-                        sentence += "higher "
-                    sentence += f"than the average {ratings_results[key][0]} movie"
-                    if isnegative:
-                        st.error(sentence)
-                    else:
-                        st.success(sentence)
-                print(sentence)
+                        for key in list(ratings_results.keys()):
+                            isnegative = ratings_results[key][2] < 0
+                            if ratings_results[key][0] != "missing":
+                                sentence = "The predicted rating is "
+                                sentence += f"**{round(abs(ratings_results[key][2]))}%** "
+                                if isnegative:
+                                    sentence += "lower "
+                                else:
+                                    sentence += "higher "
+                                sentence += f"than the average {ratings_results[key][0]} movie"
+                                if isnegative:
+                                    st.error(sentence)
+                                else:
+                                    st.success(sentence)
 
 
 with tab3:
@@ -577,42 +575,39 @@ with tab3:
                 st.write(
                     f"Predicted Revenue: ${round(predicted_revenue / 1_000_000, 1) } million"
                 )
-    with colrev2:
-        if revenue:
-            st.write("### Quick Insights")
-            # Define the content for each insight
-            query = {
-                "actor": revenue["actors"],
-                "actress": revenue["actresses"],
-                "director": revenue["directors"],
-                "genres": [genre_revenue],
-            }
-            prev_work = has_crew_worked_before(df, query)
-            revenue_results = evaluate_predicted_revenue(df, predicted_revenue, query)
-            print(revenue_results)
-            unique_content = ""
-            if prev_work:
-                unique_content += "**The crew has previously worked in:** \n\n"
-                for tconst in prev_work:
-                    link = f"https://www.imdb.com/title/{tconst}"
-                    primary_title = df[df['tconst'] == tconst]['primaryTitle'].iloc[0]
-                    unique_content += f"- [{primary_title}]({link}) \n\n"
-                st.info(unique_content)
-            else:
-                st.info("**The cast and crew combination is UNIQUE!**")
+                with colrev2:
+                    if revenue:
+                        st.write("### Quick Insights")
+                        # Define the content for each insight
+                        query = {
+                            "actor": revenue["actors"],
+                            "actress": revenue["actresses"],
+                            "director": revenue["directors"],
+                            "genres": [genre_revenue],
+                        }
+                        prev_work = has_crew_worked_before(df, query)
+                        revenue_results = evaluate_predicted_revenue(df, predicted_revenue, query)
+                        print(revenue_results)
+                        unique_content = ""
+                        if prev_work:
+                            unique_content += "**The crew has previously worked in:** \n\n"
+                            for tconst in prev_work:
+                                link = f"https://www.imdb.com/title/{tconst}"
+                                primary_title = df[df['tconst'] == tconst]['primaryTitle'].iloc[0]
+                                unique_content += f"- [{primary_title}]({link}) \n\n"
+                            st.info(unique_content)
 
-            for key in list(revenue_results.keys()):
-                isnegative = revenue_results[key][2] < 0
-                if revenue_results[key][0] != "missing":
-                    sentence = "The revenue rating is "
-                    sentence += f"**{round(abs(revenue_results[key][2]))}%** "
-                    if isnegative:
-                        sentence += "lower "
-                    else:
-                        sentence += "higher "
-                    sentence += f"than the average {revenue_results[key][0]} movie"
-                    if isnegative:
-                        st.error(sentence)
-                    else:
-                        st.success(sentence)
-                print(sentence)
+                        for key in list(revenue_results.keys()):
+                            isnegative = revenue_results[key][2] < 0
+                            if revenue_results[key][0] != "missing":
+                                sentence = "The revenue rating is "
+                                sentence += f"**{round(abs(revenue_results[key][2]))}%** "
+                                if isnegative:
+                                    sentence += "lower "
+                                else:
+                                    sentence += "higher "
+                                sentence += f"than the average {revenue_results[key][0]} movie"
+                                if isnegative:
+                                    st.error(sentence)
+                                else:
+                                    st.success(sentence)
