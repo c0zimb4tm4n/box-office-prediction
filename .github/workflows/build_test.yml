@@ -108,8 +108,7 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          base-path: box_office_prediction
-          path-to-lcov: box_office_prediction/coverage.lcov
+          path-to-lcov: coverage.lcov
           # The following two options are needed for "parallel"
           # runs - ie if you have a matrix of python versions.
           # This holds off on reporting code coverage to
