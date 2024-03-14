@@ -57,11 +57,13 @@ The MIT License is a permissive open-source software license that allows users t
 
 **Examples:** This folder contains an example with images of how to use the tool.
 
-**Box-office-prediction:** This folder contains the models, data cleaning files, packages, tests and streamlit app.
+**Box-office-prediction:** This folder contains streamlit app files, data cleaning, model training and test files.
 
-**Data:** This folder contains the data used in analyses with the latest cleaned data.
+**Data:** This folder contains the data used in analyses with the latest cleaned data and raw data.
 
 **Docs:** This folder contains documentations of the project, including technology review and final presentation slides, function specification, component specification, demo, design, and milestone.
+
+**Scripts:** This folder contains data cleaning and model training files.
 
 **License.txt:** The MIT license used for this project.
 
