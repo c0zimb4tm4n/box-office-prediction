@@ -6,7 +6,7 @@ It includes a series of unit tests for to examine the functionalities
 of app.py file.
 """
 
-# pylint: disable=import-error, wrong-import-position, too-many-public-methods
+# pylint: disable=import-error, wrong-import-position, too-many-public-methods, invalid-name, duplicate-code
 
 import unittest
 import sys

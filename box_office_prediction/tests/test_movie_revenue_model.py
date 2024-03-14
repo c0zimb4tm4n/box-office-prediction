@@ -8,7 +8,7 @@ import catboost as cb
 import pandas as pd
 from box_office_prediction.revenue_model import train_movie_revenue_model, predict_model
 
-#pylint: disable=invalid-name, line-too-long
+#pylint: disable=invalid-name, line-too-long, duplicate-code
 
 class TestMovieRevenueModel(unittest.TestCase):
     """
