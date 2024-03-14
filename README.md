@@ -91,30 +91,30 @@ The project is built using Python 3.0+ and several open-source Python packages s
 
 ## Tutorial For Using the Tool  
 
-#### Step 1: Cloning the Repository
+#### Step 1: Cloning the Repository  
 To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the [Git Guide](https://docs.conda.io/projects/conda/en/latest/commands/install.html). Once Git is set up, clone the repository to your computer by executing the following command in your terminal
 
 `git clone git@github.com:c0zimb4tm4n/box-office-prediction.git`  
 
 
-#### Step 2: Navigate to the Project Directory
+#### Step 2: Navigate to the Project Directory  
 Change into the project directory:
 
 `cd box-office-prediction`
 
-#### Step 3: Create the Conda Environment
+#### Step 3: Create the Conda Environment  
 Before creating the Conda environment, ensure you have Conda installed. If you need to install Conda, follow the Conda Installation Guide. With Conda installed, create the project environment using:
 
 `conda env create -f box_office_env.yml`
 
 This command reads the box_office_env.yml file and sets up an environment named box_office with all the required Python dependencies.
 
-#### Step 4: Activate the Conda Environment
+#### Step 4: Activate the Conda Environment  
 Activate the newly created Conda environment:
 
 `conda activate box_office`
 
-#### Step 5: Download Required Models
+#### Step 5: Download Required Models  
 Use the gdown command to download necessary machine learning models into the correct project directory:  
 `gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib`  
 `gdown --id 1ypQ1VkEJp8c3If2941axznVLgST4mSyU -O box_office_prediction/models/ratingModelv2.joblib`
@@ -131,6 +131,6 @@ After using the application, you can deactivate the Conda environment by running
 `conda deactivate`
 
 
-## Video Demonstration
+## Video Demonstration  
 Access the demo here for a detailed understanding of the flow of our project.
 [Video Download](https://github.com/c0zimb4tm4n/box-office-prediction/blob/main/docs/demo_recorded.webm)
