@@ -13,7 +13,6 @@ import requests
 from bs4 import BeautifulSoup
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
-import xgboost as xgb
 
 #pylint: disable=invalid-name, broad-exception-caught
 
@@ -264,17 +263,6 @@ data = pd.DataFrame({
 data = pd.get_dummies(data)
 X = data.drop('target', axis=1)
 y = data['target']
-
-# Splitting data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-xgb_reg = xgb.XGBRegressor(objective='reg:squarederror', eval_metric='rmse')
-xgb_reg.fit(X_train, y_train)
-
-y_pred = xgb_reg.predict(X_test)
-
-rmse = np.sqrt(mean_squared_error(y_test, y_pred))
-print("RMSE:", rmse)
 
 revenue1 = pd.read_csv('./revenue_prodcompany_70290yr_withbudget.csv')
 revenue2 = pd.read_csv('./revenue_prodcompany_90-latyr_withbudget.csv')
