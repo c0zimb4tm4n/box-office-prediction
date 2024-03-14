@@ -23,7 +23,7 @@ def generate_data(filepath):
 
     for col in test_df.columns:
         test_df[col] = random.sample(test_df[col].tolist(), len(test_df[col]))
-    test_df.head(100).to_csv("test_data_movies.csv", index=False)
+    test_df.head(1000).to_csv("test_data_movies.csv", index=False)
 
-FILE_PATH = "../../../data/cleaned/data_clean_v6.csv"
+FILE_PATH = "./data/cleaned/data_clean_v6.csv"
 generate_data(FILE_PATH)
