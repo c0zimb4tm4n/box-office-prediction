@@ -98,7 +98,7 @@ genres_all.sort()
 genres_all = tuple(genres_all)
 
 
-ratings_model = joblib.load("box_office_prediction/models/ratingModelv1.joblib")
+ratings_model = joblib.load("box_office_prediction/models/ratingModelv2.joblib")
 
 #### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(
