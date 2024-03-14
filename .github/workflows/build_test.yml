@@ -81,6 +81,7 @@ jobs:
         run: |
           conda install --yes coverage
           conda install --yes -c conda-forge gdown
+          
 
       -- name: Fetch trained models
         run: |
