@@ -1,20 +1,20 @@
-# Box Office Prediction
+# Box Office Prediction  
 [![Coverage Status](https://coveralls.io/repos/github/c0zimb4tm4n/box-office-prediction/badge.svg?branch=main)](https://coveralls.io/github/c0zimb4tm4n/box-office-prediction?branch=main)
-![Workflow Status](https://github.com/c0zimb4tm4n/box-office-prediction/actions/workflows/build_test.yml/badge.svg)
+![Workflow Status](https://github.com/c0zimb4tm4n/box-office-prediction/actions/workflows/build_test.yml/badge.svg)  
 Our project introduces an innovative tool designed to aid the movie production industry. Aimed at producers, directors, casting directors, and industry insiders, this tool leverages predictive analytics to forecast the potential revenue of movies that are still in the conceptual phase.
 
-## Project Type
+## Project Type  
 Tool
 
-## Team Members
+## Team Members  
 #### Apratim Tripathi
 #### Trisha Banerjee
 #### Rohit Chandiramani
-#### Zongze Li
+#### Zongze Li  
 
 
 
-## Table of Contents
+## Table of Contents  
 
 - [Key Features](#key-features)
 - [Our Goal](#our-goal)
@@ -25,7 +25,7 @@ Tool
 - [Video Demonstration](video-demonstration)
 
 
-## Key Features
+## Key Features  
 #### Revenue Prediction
 By inputting data such as actors, actresses, writers, directors, and genres, our tool provides an estimated revenue figure for hypothetical movies.
 
@@ -36,11 +36,11 @@ Users can explore in-depth analytics showing the performance of actors and actre
 The tool aids in strategizing the hiring process, focusing on maximizing profits by selecting the ideal combination of talent and genre based on historical data and predictive analysis.
 
 
-## Our Goal
+## Our Goal  
 To empower industry players with data-driven insights, enabling them to make strategic decisions that enhance profitability and success in the competitive landscape of movie production.
 
 
-## Data Sources
+## Data Sources  
 #### 1. IMDb Non-Commercial Datasets
 The IMDb Non-Commercial Datasets provide subsets of IMDb's movie, TV, and celebrity data for personal and non-commercial use. These datasets, available for download in a gzipped, tab-separated-values (TSV) format, are updated daily and adhere to specific terms and conditions.
 
@@ -67,29 +67,29 @@ To use inflation-corrected revenues, we used this dataset. This dataset encompas
 
 Link: [Kaggle Dataset](https://www.kaggle.com/datasets/varpit94/us-inflation-data-updated-till-may-2021)
 
-## Software Dependencies and License Information
+## Software Dependencies and License Information  
 The project is built using Python 3.0+ and several open-source Python packages such as pandas, NumPy, scikit-learn, and Streamlit. The complete list of dependencies can be found in requirements.txt. This project is licensed under the MIT License, with full details available in LICENSE.txt.
 
 
-## Directory Summary
+## Directory Summary  
 .
-├── Examples
-│   └── example_images
-├── box_office_prediction
-│   ├── __pycache__
-│   ├── models
-│   ├── notebooks
-│   └── tests
-│       └── __pycache__
-├── data
-│   ├── cleaned
-│   └── raw
-├── docs
-└── scripts
-    └── __pycache__
+├── Examples  
+│   └── example_images  
+├── box_office_prediction  
+│   ├── __pycache__  
+│   ├── models  
+│   ├── notebooks  
+│   └── tests  
+│       └── __pycache__  
+├── data  
+│   ├── cleaned  
+│   └── raw  
+├── docs  
+└── scripts  
+    └── __pycache__  
 
 
-## Tutorial For Using the Tool
+## Tutorial For Using the Tool  
 
 #### Step 1: Cloning the Repository
 To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the Git Guide. Once Git is set up, clone the repository to your computer by executing the following command in your terminal
@@ -115,17 +115,17 @@ Activate the newly created Conda environment:
 `conda activate box_office`
 
 #### Step 5: Download Required Models
-Use the gdown command to download necessary machine learning models into the correct project directory:
-`gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib`
+Use the gdown command to download necessary machine learning models into the correct project directory:  
+`gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib`  
 `gdown --id 1ypQ1VkEJp8c3If2941axznVLgST4mSyU -O box_office_prediction/models/ratingModelv2.joblib`
 
 These commands download the revenueModelv2.joblib and ratingModelv2.joblib models required for the application to function.
 
-#### Step 6: Run the Application
+#### Step 6: Run the Application  
 With the environment set up and models downloaded, you can now run the application using Streamlit:
 `streamlit run box_office_prediction/app.py`
 
-#### Step 7: Deactivate the Conda Environment
+#### Step 7: Deactivate the Conda Environment  
 After using the application, you can deactivate the Conda environment by running:
 
 `conda deactivate`
