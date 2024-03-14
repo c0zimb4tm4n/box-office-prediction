@@ -8,7 +8,7 @@ import catboost as cb
 import pandas as pd
 from box_office_prediction.rating_model import train_model, predict_model
 
-#pylint: disable=invalid-name, line-too-long
+#pylint: disable=invalid-name, line-too-long,duplicate-code
 class TestMovieRatingModel(unittest.TestCase):
     """
     A test case class for testing the movie rating model.
