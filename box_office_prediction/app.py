@@ -66,7 +66,9 @@ st.header("Box Office Genie", divider="grey")
 ####setup####
 ## Reading the data for front-end ##
 
-df = pd.read_csv("../data/cleaned/data_clean_v6.csv")
+
+df = pd.read_csv("data/cleaned/data_clean_v6.csv")
+
 actors_all = list(df["actor"].unique())
 actors_all.remove("missing")
 actors_all.sort()
@@ -95,7 +97,8 @@ genres_all = list(df["genres"].unique())
 genres_all.sort()
 genres_all = tuple(genres_all)
 
-ratings_model = joblib.load("./models/ratingModelv1.joblib")
+
+ratings_model = joblib.load("box_office_prediction/models/ratingModelv1.joblib")
 
 #### Declaring Tabs ####
 tab1, tab2, tab3 = st.tabs(
@@ -470,7 +473,8 @@ with tab2:
 
 
 with tab3:
-    revenue_model = joblib.load("./models/revenueModelv2.joblib")
+    revenue_model = joblib.load("box_office_prediction/models/revenueModelv2.joblib")
+
     st.title("Movie Revenue Prediction")
     # Input fields
 

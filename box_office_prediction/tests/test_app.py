@@ -1,3 +1,4 @@
+
 """
 This module implements app tests for the app.py file.
 
@@ -15,9 +16,11 @@ from streamlit.testing.v1 import AppTest
 
 import numpy as np
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-import app
+current_script_path = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.dirname(current_script_path)
+sys.path.append(project_root)
 
+import app
 
 class SimpleAppTest(unittest.TestCase):
     """
@@ -35,7 +38,7 @@ class SimpleAppTest(unittest.TestCase):
         The function unittest framework automatically runs before
         each test.
         """
-        self.at = AppTest.from_file('../app.py').run(timeout=60)
+        self.at = AppTest.from_file('box_office_prediction/app.py').run(timeout=60)
 
     def test_headers(self):
         """
