@@ -85,8 +85,8 @@ jobs:
 
       - name: Fetch trained models
         run: |
-          gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box-office-prediction/models/revenueModelv2.joblib
-          gdown --id 1ypQ1VkEJp8c3If2941axznVLgST4mSyU -O box-office-prediction/models/ratingModelv2.joblib
+          gdown --id 1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B -O box_office_prediction/models/revenueModelv2.joblib
+          gdown --id 1ypQ1VkEJp8c3If2941axznVLgST4mSyU -O box_office_prediction/models/ratingModelv2.joblib
 
       # If there are any other steps in order for your tests to
       # run successfully, you can add those steps here!
