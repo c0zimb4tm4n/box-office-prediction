@@ -55,6 +55,8 @@ The MIT License is a permissive open-source software license that allows users t
 
 ## Directory Summary
 
+**Examples:** This folder contains an example with images of how to use the tool.
+
 **Box-office-prediction:** This folder contains the models, data cleaning files, packages, tests and streamlit app.
 
 **Data:** This folder contains the data used in analyses with the latest cleaned data.
@@ -71,6 +73,21 @@ The package is organized as follows:
 box-office-prediction (master)  
 project/
 │
+├── Examples/
+│   ├── example_images/
+│   │   ├── example_image_1
+│   │   ├── example_image_2
+│   │   ├── example_image_3
+│   │   ├── example_image_4
+│   │   ├── example_image_5
+│   │   ├── example_image_6
+│   │   ├── example_image_7
+│   │   ├── example_image_8
+│   │   ├── example_image_9
+│   │   ├── example_image_10
+│   │   ├── example_image_11
+│   │   └── example_image_12
+│   └── README.md
 ├── box-office-prediction/
 │   ├── .streamlit/
 │   │   └── config.toml
@@ -112,21 +129,6 @@ project/
 │   ├── diag.png
 │   ├── functional_specification.md
 │   └── milestone.png
-├── Examples/
-│   ├── example_images/
-│   │   ├── example_image_1
-│   │   ├── example_image_2
-│   │   ├── example_image_3
-│   │   ├── example_image_4
-│   │   ├── example_image_5
-│   │   ├── example_image_6
-│   │   ├── example_image_7
-│   │   ├── example_image_8
-│   │   ├── example_image_9
-│   │   ├── example_image_10
-│   │   ├── example_image_11
-│   │   └── example_image_12
-│   └── README.md
 ├── .gitignore
 ├── LICENSE
 ├── README.md
