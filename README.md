@@ -55,6 +55,8 @@ The MIT License is a permissive open-source software license that allows users t
 
 ## Directory Summary
 
+**Examples:** This folder contains an example with images of how to use the tool.
+
 **Box-office-prediction:** This folder contains the models, data cleaning files, packages, tests and streamlit app.
 
 **Data:** This folder contains the data used in analyses with the latest cleaned data.
@@ -71,47 +73,6 @@ The package is organized as follows:
 box-office-prediction (master)  
 project/
 │
-├── box-office-prediction/
-│   ├── .streamlit/
-│   │   └── config.toml
-│   ├── models/
-│   │   └── ratingModelv1.joblib
-│   ├── notebooks/
-│   │   ├── data_cleaning/
-|   |   │   ├── Data_Ratings_v1.ipynb
-|   |   │   ├── Data_Ratings_v2.ipynb
-|   |   │   ├── Data_Ratings_v3.ipynb
-|   |   │   ├── __init__.py
-|   |   │   ├── data_extraction_EDA.ipynb
-|   |   │   └── death-filter.ipynb
-│   │   ├── model_training/
-|   |   │   ├── Rating_Model.ipynb
-|   |   │   ├── Revenue_Model.ipynb
-|   |   │   └── __init__.py
-│   │   └── __init__.py
-│   ├── packages/
-│   │   ├── __init__.py
-│   │   └── helpers.py
-│   ├── .DS_Store
-│   ├── __init__.py
-│   ├── app.py
-│   └── streamlit_app_visual_demo.py
-├── data/
-│   ├── cleaned/
-│   │   ├── data_clean_v5.csv
-│   │   └── data_clean_v6.csv
-│   ├── raw/
-│   │   └── tconsts_prd_company.csv
-│   └── InflationCPIs.csv
-├── docs/
-│   ├── Draft-technology_review_v3.pptx
-│   ├── Final Presentation Slides.pdf
-│   ├── component_specification.md
-│   ├── demo_recorded.webm
-│   ├── demo_recorded_.webm
-│   ├── diag.png
-│   ├── functional_specification.md
-│   └── milestone.png
 ├── Examples/
 │   ├── example_images/
 │   │   ├── example_image_1
@@ -127,6 +88,50 @@ project/
 │   │   ├── example_image_11
 │   │   └── example_image_12
 │   └── README.md
+├── box-office-prediction/
+│   ├── .streamlit/
+│   │   └── config.toml
+│   ├── models/
+│   │   └── ratingModelv1.joblib
+│   ├── notebooks/
+│   │   ├── data_cleaning/
+|   |   │   ├── data_ratings_v3.py
+|   |   │   └── death_filter.py
+|   |   ├── Rating_Model.ipynb
+|   |   └── Revenue_Model.ipynb
+│   ├── tests/
+│   │   ├── __init__.py
+│   │   └── test_app.py
+│   ├── .DS_Store
+│   ├── __init__.py
+│   ├── app.py
+│   ├── helpers.py
+│   └── rating_model.py
+├── data/
+│   ├── cleaned/
+│   │   ├── data_clean_v5.csv
+│   │   ├── data_clean_v6.csv
+│   │   └── test_data_movies.csv
+│   ├── raw/
+│   │   └── tconsts_prd_company.csv
+│   └── InflationCPIs.csv
+├── docs/
+│   ├── Draft-technology_review_v3.pptx
+│   ├── Final Presentation Slides.pdf
+│   ├── component_specification.md
+│   ├── demo_recorded.webm
+│   ├── demo_recorded_.webm
+│   ├── diag.png
+│   ├── functional_specification.md
+│   └── milestone.png
+├── scripts/
+│   ├── Data_Ratings_v1.ipynb
+│   ├── Data_Ratings_v2.ipynb
+│   ├── Data_Ratings_v3.ipynb
+│   ├── __init__.py
+│   ├── data_extraction_EDA.ipynb
+│   ├── death-filter.ipynb
+│   └── generate_test_data.py
 ├── .gitignore
 ├── LICENSE
 ├── README.md
