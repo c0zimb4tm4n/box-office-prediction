@@ -92,7 +92,7 @@ The project is built using Python 3.0+ and several open-source Python packages s
 ## Tutorial For Using the Tool  
 
 #### Step 1: Cloning the Repository
-To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the Git Guide. Once Git is set up, clone the repository to your computer by executing the following command in your terminal
+To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the [Git Guide](https://docs.conda.io/projects/conda/en/latest/commands/install.html). Once Git is set up, clone the repository to your computer by executing the following command in your terminal
 
 `git clone git@github.com:c0zimb4tm4n/box-office-prediction.git`  
 
