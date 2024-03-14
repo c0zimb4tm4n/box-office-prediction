@@ -130,54 +130,53 @@ def predict_revenue(revenue, runtime_minutes, genre, revenue_model, predicted_ra
 
 def has_crew_worked_before(findata, query):
     """
-    Checks if the specified crew members have previously worked together on 
-    movies of specified genres.
+    Determines whether specified actors, actresses, and directors have previously 
+    collaborated on movies within certain genres.
 
     Args:
-        findata (DataFrame): The DataFrame containing movie data.
-        query (dict): A dictionary specifying lists of actors, actresses, directors, 
-        and genres.
+        findata (pd.DataFrame): A pandas DataFrame containing movie data. The DataFrame
+            is expected to have columns for 'tconst', 'genres', 'actor', 'actress', and
+            'director', among others.
+        query (dict): A dictionary specifying the crew members and genres to be checked.
+            It should have four keys: 'actor', 'actress', 'director', and 'genres'. Each
+            key should map to a list of strings, where 'genres' is a list of genres to
+            filter the movies by, and 'actor', 'actress', 'director' are lists of names of
+            the respective crew members.
 
     Returns:
-        list: A list of unique tconsts (movie identifiers) where the specified crew 
-        members have worked together.
+        list: A list of strings, where each string is a 'tconst' identifier of a movie
+            where at least two of the specified crew members have worked together within
+            the specified genres. If no such movies exist, an empty list is returned.
     """
     print(query)
     actors, actresses, directors, genres = query.values()
-    tconsts_map = {}
+    tconsts_map ={}
     for genre in genres:
         for actor in actors:
-            filtered_data = findata[
-                (findata["genres"] is genre) & (findata["actor"] == actor)
-            ]
-            for tconst in filtered_data["tconst"].unique():
+            filtered_data = findata[(findata['genres'] == genre) & (findata['actor'] == actor)]
+            for tconst in filtered_data['tconst'].unique():
                 if tconst in tconsts_map.keys():
                     if actor not in tconsts_map[tconst]:
                         tconsts_map[tconst].append(actor)
                 else:
                     tconsts_map[tconst] = [actor]
         for actress in actresses:
-            filtered_data = findata[
-                (findata["genres"] is genre) & (findata["actress"] == actress)
-            ]
-            for tconst in filtered_data["tconst"].unique():
+            filtered_data = findata[(findata['genres'] == genre) & (findata['actress'] == actress)]
+            for tconst in filtered_data['tconst'].unique():
                 if tconst in tconsts_map.keys():
                     if actress not in tconsts_map[tconst]:
                         tconsts_map[tconst].append(actress)
                 else:
                     tconsts_map[tconst] = [actress]
         for director in directors:
-            filtered_data = findata[
-                (findata["genres"] is genre) & (findata["director"] == director)
-            ]
-            for tconst in filtered_data["tconst"].unique():
+            filtered_data = findata[(findata['genres'] == genre) & (findata['director'] ==director)]
+            for tconst in filtered_data['tconst'].unique():
                 if tconst in tconsts_map.keys():
                     if director not in tconsts_map[tconst]:
                         tconsts_map[tconst].append(director)
                 else:
                     tconsts_map[tconst] = [director]
-    return [key for key, value in tconsts_map.items() if len(value) >= 2]
-
+    return ([key for key, value in tconsts_map.items() if len(value)>=2])
 
 def evaluate_predicted_rating(findata, rating, query):
     """
