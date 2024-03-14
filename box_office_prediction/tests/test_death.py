@@ -1,23 +1,29 @@
-import unittest
-from unittest.mock import patch, mock_open
+"""
+This module tests the death_filter functionality within the application.
+It ensures that deceased individuals are correctly filtered out of datasets.
+"""
+
 import os
+import unittest
+from unittest.mock import patch
 import sys
+import pandas as pd
 
+#pylint: disable=line-too-long
+from scripts.death_filter import filter_deceased_individuals
+
+# Append the project root directory to the sys.path list for imports
 current_script_path = os.path.dirname(os.path.abspath(__file__))
-
 project_root = os.path.dirname(os.path.dirname(current_script_path))
 sys.path.append(project_root)
-from box_office_prediction.notebooks.data_cleaning.death_filter import filter_deceased_individuals
 
-import pandas as pd
-from io import StringIO
 
 class TestDeathFilter(unittest.TestCase):
     """Tests for the death_filter.py script."""
     @patch('pandas.DataFrame.to_csv')
     def test_filter_deceased_individuals(self, mock_to_csv):
         """Test that deceased individuals are correctly filtered out."""
-        data_clean_v5_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'data', 'cleaned', 'test_data_movies.csv')
+        data_clean_v5_path = os.path.join(project_root, 'data', 'cleaned', 'test_data_movies.csv')
         # Construct names_data DataFrame from the provided inline data
         names_data = pd.DataFrame({
             'nconst': ['nm0000086', 'nm0000087', 'nm0000089', 'nm0000090', 'nm0000096', 'nm0000097', 'nm0111013'],
@@ -33,16 +39,18 @@ class TestDeathFilter(unittest.TestCase):
                                'tt0106179,tt2294189,tt0442632,tt0455590', 'tt0306047,tt0893509,tt0426592,tt0115624',
                                'tt0356910,tt7798634,tt0362359,tt0419843']
         })
-        # Patch read_csv for both data_clean_v5 and names_data
+
+        # Patch read_csv to return the test data and names data
         with patch('pandas.read_csv', side_effect=[
-            pd.read_csv(data_clean_v5_path),
-            names_data
-        ]) as mock_read_csv:
+            pd.read_csv(data_clean_v5_path),  # This will read the test data
+            names_data  # This will be used instead of reading 'name.tsv'
+        ]):
             # Call the function under test
             filter_deceased_individuals(data_clean_v5_path, 'fake_path/name.tsv', 'fake_path/output.csv')
+
             # Assertions to ensure the filtering logic is as expected
             mock_to_csv.assert_called_once()
-            # Additional checks can go here
-            # e.g., check the DataFrame content that was passed to to_csv
+
+# Entry point for the unittest script
 if __name__ == '__main__':
     unittest.main()
