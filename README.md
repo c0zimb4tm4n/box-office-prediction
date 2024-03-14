@@ -94,7 +94,7 @@ The project is built using Python 3.0+ and several open-source Python packages s
 #### Step 1: Cloning the Repository
 To get started with the project on your local machine, first ensure you have Git installed. If not, follow the instructions provided in the Git Guide. Once Git is set up, clone the repository to your computer by executing the following command in your terminal
 
-`[git clone git@github.com:c0zimb4tm4n/box-office-prediction.git](https://github.com/c0zimb4tm4n/box-office-prediction.git)`  
+`git clone git@github.com:c0zimb4tm4n/box-office-prediction.git`  
 
 
 #### Step 2: Navigate to the Project Directory
