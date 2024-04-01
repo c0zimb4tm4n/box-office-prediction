@@ -48,6 +48,7 @@ Dependencies:
 # pylint: disable=invalid-name,import-error
 
 import streamlit as st
+import subprocess
 import pandas as pd
 import joblib
 import plotly.express as px
@@ -96,6 +97,10 @@ production_companies = tuple(production_companies)
 genres_all = list(df["genres"].unique())
 genres_all.sort()
 genres_all = tuple(genres_all)
+
+## pulling the model ##
+subprocess.run(["gdown", "--id", "1zea9X4Rbw-2_VmHQlyajNPT3Fd3ngZ5B","-O", "box_office_prediction/models/revenueModelv2.joblib"])
+subprocess.run(["gdown", "--id", "1ypQ1VkEJp8c3If2941axznVLgST4mSyU","-O", "box_office_prediction/models/ratingModelv2.joblib"])
 
 
 ratings_model = joblib.load("box_office_prediction/models/ratingModelv2.joblib")
